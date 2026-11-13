@@ -18,7 +18,7 @@ export function Header() {
                 href="/"
                 className="font-semibold text-primary tracking-tight"
               >
-                Dhuran Supporting Organization
+
               </Link>
             </div>
 
@@ -35,12 +35,12 @@ export function Header() {
               <div className="flex items-center gap-2">
                 <Link href="/login">
                   <button className="px-4 py-2 text-sm font-medium rounded-full border border-border hover:bg-muted">
-                    <User className="w-4 h-4 mr-2" /> Mzazi
+                    <User className="w-4 h-4 mr-2" />
                   </button>
                 </Link>
                 <Link href="/admin">
                   <button className="px-4 py-2 text-sm font-medium rounded-full bg-primary text-white hover:bg-primary/90">
-                    <Shield className="w-4 h-4 mr-2" /> Msimamizi
+                    <Shield className="w-4 h-4 mr-2" />
                   </button>
                 </Link>
               </div>
@@ -57,7 +57,7 @@ export function Header() {
         aria-label="Navigation sidebar"
       >
         <div className="p-4 flex justify-between items-center border-b border-border">
-          <h2 className="text-sm font-semibold text-foreground">Menyu</h2>
+          <h2 className="text-sm font-semibold text-foreground"></h2>
           <button
             onClick={() => setSidebarOpen(false)}
             className="p-2 hover:bg-muted rounded-full"
@@ -71,31 +71,27 @@ export function Header() {
             href="/"
             className="block px-3 py-2 rounded-lg text-foreground hover:bg-muted hover:text-primary transition-colors"
           >
-            <Home className="w-4 h-4 mr-2" /> Nyumbani
+            <Home className="w-4 h-4 mr-2" />
           </Link>
           <Link
             href="/programs"
             className="block px-3 py-2 rounded-lg text-foreground hover:bg-muted hover:text-primary transition-colors"
           >
-            Our work
           </Link>
           <Link
             href="/health"
             className="block px-3 py-2 rounded-lg text-foreground hover:bg-muted hover:text-primary transition-colors"
           >
-            Community health
           </Link>
           <Link
             href="/women"
             className="block px-3 py-2 rounded-lg text-foreground hover:bg-muted hover:text-primary transition-colors"
           >
-            Women's health
           </Link>
           <Link
             href="/support"
             className="block px-3 py-2 rounded-lg bg-primary text-white text-center font-medium hover:bg-primary/90 transition-colors"
           >
-            Support Dhuran
           </Link>
         </nav>
       </aside>

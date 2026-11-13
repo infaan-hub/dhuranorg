@@ -127,7 +127,7 @@ export default function DonatePage() {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Heart className="h-4 w-4" /> Mchangiaji: msaidie mtoto
+            <Heart className="h-4 w-4" /> : msaidie mtoto
           </CardTitle>
           <CardDescription>
             Unaweza kumsaidia mtoto mmoja au kuchagua huduma zote. Kituo kitawasiliana nawe
@@ -177,10 +177,10 @@ export default function DonatePage() {
             </div>
 
             <fieldset className="border border-input rounded-xl p-4">
-              <legend className="px-2 font-medium text-primary">Taarifa za mchangiaji</legend>
+              <legend className="px-2 font-medium text-primary">Taarifa za mchango</legend>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                 <div className="space-y-2">
-                  <Label htmlFor="donorType">Aina ya mchangiaji</Label>
+                  <Label htmlFor="donorType">Aina ya mchango</Label>
                   <select id="donorType" value={donorType} onChange={(e) => setDonorType(e.target.value as any)} className="w-full">
                     {DONOR_TYPES.map((t) => (
                       <option key={t} value={t}>{t}</option>

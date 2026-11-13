@@ -1,7 +1,6 @@
-# Dhuran Supporting Organization
+# 
 
-A responsive Next.js homepage for Dhuran Supporting Organization, focused on
-supporting children, community health, and women's health.
+A responsive Next.js homepage focused on supporting children, community health, and women's health.
 
 ## Getting started
 

@@ -2,7 +2,7 @@
   "name": "kituo-cha-matumaini",
   "version": "1.0.0",
   "private": true,
-  "description": "Dhuran Supporting Organization — Kituo cha Matumaini ya Watoto (Next.js)",
+  "description": "",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

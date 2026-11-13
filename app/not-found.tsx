@@ -12,7 +12,7 @@ export default function NotFound() {
           Kurasa unatafuta haipo au ilifutwa.
         </p>
         <Button asChild className="bg-primary text-white">
-          <Link href="/"><Home className="w-4 h-4 mr-2" /> Nyumbani</Link>
+          <Link href="/"><Home className="w-4 h-4 mr-2" /></Link>
         </Button>
       </div>
     </div>

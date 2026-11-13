@@ -67,7 +67,7 @@ export default function LoginPage() {
     const password = formData.get('adminPassword') as string
 
     if (password !== DEFAULT_ADMIN_PASSWORD) {
-      setError('Nenosiri la msimamizi si sahihi.')
+      setError('Nenosiri si sahihi.')
       setLoading(false)
       return
     }
@@ -97,10 +97,10 @@ export default function LoginPage() {
           >
             <TabsList className="grid w-full grid-cols-2">
               <TabsTrigger value="parent">
-                <User className="w-4 h-4 mr-2" /> Mzazi
+                <User className="w-4 h-4 mr-2" />
               </TabsTrigger>
               <TabsTrigger value="admin">
-                <Shield className="w-4 h-4 mr-2" /> Msimamizi
+                <Shield className="w-4 h-4 mr-2" />
               </TabsTrigger>
             </TabsList>
 
@@ -125,7 +125,7 @@ export default function LoginPage() {
                   />
                 </div>
                 <Button type="submit" className="w-full" disabled={loading}>
-                  {loading ? 'Inaingia...' : <Login className="w-4 h-4 mr-2" />Ingia}
+                  {loading ? 'Inaingia...' : <Login className="w-4 h-4 mr-2" />}
                 </Button>
                 <p className="text-xs text-muted-foreground">
                   Namba na nenosiri hutolewa na kituo baada ya mtoto kusajiliwa.
@@ -136,7 +136,7 @@ export default function LoginPage() {
             <TabsContent value="admin" className="space-y-4">
               <form onSubmit={handleAdminLogin} className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="adminPassword">Nenosiri la msimamizi</Label>
+                  <Label htmlFor="adminPassword">Nenosiri</Label>
                   <Input
                     id="adminPassword"
                     type="password"
@@ -145,7 +145,7 @@ export default function LoginPage() {
                   />
                 </div>
                 <Button type="submit" className="w-full" disabled={loading}>
-                  {loading ? 'Inaingia...' : <Login className="w-4 h-4 mr-2" />Ingia kama msimamizi}
+                  {loading ? 'Inaingia...' : <Login className="w-4 h-4 mr-2" />}
                 </Button>
               </form>
             </TabsContent>

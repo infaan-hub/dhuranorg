@@ -6,40 +6,38 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           <div>
-            <h3 className="font-semibold mb-2">Dhuran Supporting Organization</h3>
-            <p className="text-sm text-muted-foreground">
-              Tunawahudumia watoto wenye ulemavu, changamoto za afya ya akili na utapiamlo kwa upendo na utaalamu.
-            </p>
+            <h3 className="font-semibold mb-2"></h3>
+            <p className="text-sm text-muted-foreground"></p>
           </div>
           <div>
-            <h4 className="font-semibold mb-3">Viungo</h4>
+            <h4 className="font-semibold mb-3"></h4>
             <nav className="space-y-2">
               <Link href="/" className="text-sm text-muted-foreground hover:text-primary">
-                <HomeIcon /> Nyumbani
+                <HomeIcon />
               </Link>
               <Link href="/leadership" className="text-sm text-muted-foreground hover:text-primary">
-                <UsersIcon /> Uongozi
+                <UsersIcon />
               </Link>
               <Link href="/donate" className="text-sm text-muted-foreground hover:text-primary">
-                <HeartIcon /> Mchangiaji
+                <HeartIcon />
               </Link>
               <Link href="/login" className="text-sm text-muted-foreground hover:text-primary">
-                <UserIcon /> Mzazi na msimamizi
+                <UserIcon />
               </Link>
             </nav>
           </div>
           <div>
-            <h4 className="font-semibold mb-3">Wasiliana</h4>
+            <h4 className="font-semibold mb-3"></h4>
             <p className="text-sm text-muted-foreground flex items-center gap-2">
-              <PinIcon /> Makunduchi, Kusini Unguja
+              <PinIcon />
             </p>
             <a href="tel:+255780981880" className="text-sm text-primary hover:underline">
-              <PhoneIcon /> 0780 981 880
+              <PhoneIcon />
             </a>
           </div>
         </div>
         <p className="text-xs text-muted-foreground text-center">
-          © 2026 Dhuran Supporting Organization. Haki zote zimehifadhiwa.
+          © 2026 . Haki zote zimehifadhiwa.
         </p>
       </div>
     </footer>

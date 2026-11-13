@@ -26,7 +26,7 @@ export const DEFAULT_ADMIN_PASSWORD =
   process.env.NEXT_PUBLIC_ADMIN_PASSWORD || 'admin123'
 
 export const DEFAULT_TEMPLATE =
-  'Habari {mzazi}, ukumbusho kutoka Dhuran Supporting Organization: {mtoto} ana kliniki {siku} ({tarehe}). Tafadhali mlete kliniki. Kwa maelezo piga 0780 981 880.'
+  'Habari , ukumbusho kutoka :  ana kliniki {siku} ({tarehe}). Tafadhali mlete kliniki. Kwa maelezo piga .'
 
 export function loadData(): AppData {
   if (typeof window === 'undefined') return DEFAULT_DATA

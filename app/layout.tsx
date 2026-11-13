@@ -8,8 +8,8 @@ import { Footer } from '@/components/layout/footer'
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
 export const metadata: Metadata = {
-  title: 'Dhuran Supporting Organization — Kituo cha Matumaini ya Watoto',
-  description: 'Tunawahudumia watoto wenye ulemavu, changamoto za afya ya akili na utapiamlo kwa upendo na utaalamu.',
+  title: '',
+  description: '',
 }
 
 export default function RootLayout({

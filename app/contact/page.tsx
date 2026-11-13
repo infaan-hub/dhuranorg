@@ -17,7 +17,7 @@ export default function ContactPage() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
         <Card>
           <CardHeader>
-            <CardTitle>Wasiliana nasi</CardTitle>
+            <CardTitle></CardTitle>
             <CardDescription>Karibu kituoni au tuandikie.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
@@ -27,7 +27,7 @@ export default function ContactPage() {
                 <div>
                   <p className="font-medium">Anwani</p>
                   <p className="text-sm text-muted-foreground">
-                    Makunduchi, Mkoa wa Kusini Unguja
+                    
                   </p>
                 </div>
               </div>
@@ -37,7 +37,7 @@ export default function ContactPage() {
                   <p className="font-medium">Simu</p>
                   <p className="text-sm text-muted-foreground">
                     <a href="tel:+255780981880" className="text-primary hover:underline">
-                      0780 981 880
+                      
                     </a>
                   </p>
                 </div>
