@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dhuran Supporting Organization - Kituo cha Matumaini ya Watoto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F0F5F3;--card:#fff;--text:#16302A;--muted:#4E645D;--blue:#1D6FB8;--pink:#1F9D6B;--orange:#5B7083;--teal:#0E7C86;--yellow:#8FE0B0;--line:#D6E1DD;--hb:#FFF1CF;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1F1B;--card:#172B26;--text:#EAF4F0;--muted:#A9C0B8;--line:#2C4740;--hb:#2A2456}}
+:root[data-theme="dark"]{--bg:#0F1F1B;--card:#172B26;--text:#EAF4F0;--muted:#A9C0B8;--line:#2C4740}
+html{scroll-padding-top:90px;height:auto}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:1.02rem/1.6 Nunito,system-ui,sans-serif}
+h1,h2,h3{font-family:Fredoka,system-ui,sans-serif;line-height:1.15;margin:0 0 .5em}
+h1{font-size:clamp(2.2rem,6.5vw,3.9rem)}h2{font-size:clamp(1.7rem,4vw,2.4rem)}h3{font-size:1.25rem}
+p{margin:0 0 1em}a{color:inherit}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+.w{width:min(1080px,100% - 2rem);margin-inline:auto}
+.pg{padding:2.5rem 0 4rem}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;padding:10px 0}
+.pill{position:relative;display:flex;align-items:center;justify-content:space-between;gap:.5rem;background:var(--card);border-radius:999px;padding:.4rem .5rem .4rem 1.3rem;box-shadow:0 8px 28px rgba(59,75,240,.2);width:min(1080px,100% - 1.5rem);margin-inline:auto}
+.brand{font:700 1.15rem Fredoka,sans-serif;text-decoration:none;color:var(--blue)}
+nav{display:flex;gap:.2rem;align-items:center}
+nav a,.acts a{text-decoration:none;font-weight:700;padding:.55rem 1rem;border-radius:999px;color:var(--muted)}
+nav a:hover,.acts a:hover{background:var(--bg);color:var(--text)}
+nav a.on,.acts a.on{background:var(--blue);color:#fff}
+.acts a.cta{background:var(--yellow);color:#16302A}
+.acts a.cta.on{background:var(--orange)}
+.mb{display:none;font:inherit;font-weight:700;border:0;border-radius:999px;background:var(--blue);color:#fff;padding:.6rem 1.1rem;cursor:pointer}
+.btn{display:inline-block;font:700 1rem Nunito,sans-serif;text-decoration:none;border:0;border-radius:999px;padding:.85rem 1.6rem;cursor:pointer;background:var(--yellow);color:#16302A;min-height:48px}
+.btn.b{background:var(--blue);color:#fff}.btn.o{background:transparent;border:2px solid #fff;color:#fff}
+.btn:hover{filter:brightness(.95)}
+.hero{background:radial-gradient(circle at 85% 20%,rgba(255,201,60,.55),transparent 22%),radial-gradient(circle at 10% 90%,rgba(15,181,166,.5),transparent 25%),linear-gradient(135deg,#1D6FB8,#8A3FFC 55%,#1F9D6B);color:#fff;border-radius:32px;padding:clamp(2rem,7vw,4.5rem)}
+.hero p{font-size:1.2rem;max-width:56ch}
+.row{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.3rem}
+.sts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin:1.5rem 0}
+.st{background:var(--card);border-radius:20px;padding:1rem 1.2rem}.st b{display:block;font:700 1.7rem Fredoka,sans-serif;color:var(--blue)}
+.grid{display:grid;gap:1.1rem;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin-top:1.5rem}
+.card{background:var(--card);border-radius:22px;padding:1.4rem;border-top:8px solid var(--c,var(--blue))}
+.card:nth-child(4n+2){--c:var(--pink)}.card:nth-child(4n+3){--c:var(--teal)}.card:nth-child(4n+4){--c:var(--orange)}
+.card p{color:var(--muted);margin:0}
+.av{width:76px;height:76px;border-radius:50%;background:var(--c);color:#fff;display:grid;place-items:center;font:700 1.8rem Fredoka,sans-serif;margin-bottom:.8rem}
+.band{background:var(--blue);color:#fff;border-radius:28px;padding:2rem;margin-top:2.5rem}
+.panel{background:var(--card);border-radius:26px;padding:clamp(1.2rem,4vw,2rem);max-width:760px;margin-inline:auto;border-top:10px solid var(--pink)}
+.panel.t{border-top-color:var(--teal)}
+form{display:grid;gap:.85rem}fieldset{border:2px dashed var(--line);border-radius:18px;padding:1rem;display:grid;gap:.85rem;margin:0}
+legend{font:600 1.1rem Fredoka,sans-serif;padding:0 .5rem;color:var(--blue)}
+label{font-weight:700;font-size:.93rem;display:block}
+input,select,textarea{width:100%;font:inherit;padding:.7rem .95rem;border-radius:14px;border:2px solid var(--line);background:var(--bg);color:var(--text)}
+input[type=checkbox]{width:auto}textarea{min-height:90px;resize:vertical}
+.two{display:grid;gap:.85rem;grid-template-columns:1fr 1fr}
+.chk{display:flex;gap:.9rem;flex-wrap:wrap}.chk label{display:flex;gap:.4rem;align-items:center;font-weight:600}
+.msg{margin-top:1rem;padding:1rem;border-radius:16px;background:var(--bg);border-left:8px solid var(--teal)}.msg.err{border-left-color:#D6304B}
+.tabs{display:flex;gap:.5rem;margin-bottom:1rem}.tabs button{flex:1;font:700 1rem Nunito;padding:.7rem;border-radius:999px;border:2px solid var(--blue);background:transparent;color:var(--text);cursor:pointer}
+.tabs button.on{background:var(--blue);color:#fff}
+.kh{display:flex;gap:1.2rem;align-items:center;flex-wrap:wrap;background:linear-gradient(135deg,var(--blue),var(--pink));color:#fff;border-radius:28px;padding:1.5rem}
+.ph{width:110px;height:110px;border-radius:50%;background:var(--yellow);color:#16302A;display:grid;place-items:center;font:700 2.6rem Fredoka;overflow:hidden;border:4px solid #fff}
+.ph img{width:100%;height:100%;object-fit:cover}
+.up{display:inline-block;margin-top:.4rem;background:#fff;color:var(--blue);border-radius:999px;padding:.35rem .9rem;font-weight:700;cursor:pointer}
+.dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.8rem;margin:1.2rem 0}
+.dl div{background:var(--card);border-radius:16px;padding:.8rem 1rem}.dl b{display:block;font-size:.85rem;color:var(--muted)}
+.tl{list-style:none;padding:0;margin:1rem 0;display:grid;gap:.7rem}.tl li{background:var(--card);border-radius:16px;padding:.8rem 1rem;border-left:8px solid var(--teal)}
+.tl p{margin:.2rem 0 0;color:var(--muted)}.tl span{color:var(--muted);font-size:.9rem}
+.docs{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.8rem;margin-top:1rem}
+.docs img{width:100%;border-radius:12px}.docs figure{margin:0}
+.tw{overflow-x:auto;background:var(--card);border-radius:18px;margin:1rem 0}
+table{border-collapse:collapse;width:100%;min-width:560px}th,td{padding:.7rem 1rem;text-align:left;border-bottom:1px solid var(--line)}
+.sm{font:700 .85rem Nunito;border:0;border-radius:999px;padding:.4rem .9rem;background:var(--blue);color:#fff;cursor:pointer}.sm.x{background:#D6304B}
+.hero2{display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;align-items:center;background:radial-gradient(circle at 90% 8%,rgba(143,224,176,.4),transparent 30%),linear-gradient(135deg,#0B4F3C,#12805C 55%,#1D6FB8);color:#fff;border-radius:36px;padding:clamp(1.5rem,5vw,3.5rem)}
+.hero2 .btn.o{border-color:#fff;color:#fff}.hero2 p{font-size:1.15rem}
+.mos{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tile{border-radius:26px;padding:1rem .8rem;text-align:center;color:#16302A;font-weight:700;line-height:1.3}
+.tile svg{width:100%;max-height:150px}.tile.a{grid-row:span 2;background:#DDF3E6}.tile.a svg{max-height:270px}.tile.b{background:#DCEAF8}.tile.c{background:#E7ECEB}
+.galg{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:.8rem;margin-top:1rem}.galg figure{margin:0}.galg img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:20px}
+.acts{display:flex;gap:.2rem;align-items:center}
+.galg video{width:100%;border-radius:20px;background:#000}.galg figcaption{padding:.3rem .2rem}.galg small{display:block;color:var(--muted)}.ev{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+body.adm{--blue:#0A6C8F;--pink:#0A6C8F;--teal:#3E92B0;--orange:#64748B;--yellow:#DDE5EB;--bg:#EDF1F4;--card:#fff;--text:#1F2933;--muted:#5B6B79;--line:#D3DCE3}
+.adm .kh{background:linear-gradient(135deg,#0A6C8F,#3E92B0)}.adm th{background:#E4EAEF}
+.ah{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;background:linear-gradient(135deg,#0A6C8F,#0E8FB0);color:#fff;border-radius:24px;padding:1.2rem 1.5rem;margin-bottom:1.2rem}.ah h2{margin:0}.ah .btn{background:#fff;color:#0A6C8F}
+summary{list-style:none;cursor:pointer}summary::-webkit-details-marker{display:none}
+footer{padding:2rem 0;text-align:center;color:var(--muted)}
+@media(max-width:820px){.mb{display:block}.acts{order:3;width:100%;justify-content:center}.pill{flex-wrap:wrap;border-radius:28px}nav{display:none;position:absolute;top:calc(100% + 8px);left:0;right:0;flex-direction:column;align-items:stretch;background:var(--card);border-radius:24px;padding:.6rem;box-shadow:0 12px 30px rgba(0,0,0,.2)}nav.open{display:flex}nav a{text-align:center}.two,.hero2{grid-template-columns:1fr}}
+
+.ev figure>div{aspect-ratio:4/3;overflow:hidden;border-radius:20px;background:#0B2B24}.ev img,.ev video{width:100%;height:100%;object-fit:cover;border-radius:0}
+.evs{background:linear-gradient(135deg,#0B4F3C,#1D6FB8);border-radius:32px;padding:clamp(1.2rem,4vw,2.5rem);margin-top:2.5rem;color:#fff}.evs h2{margin-top:0}
+.evs figure{background:#fff;color:#16302A;border-radius:24px;overflow:hidden;box-shadow:0 10px 24px rgba(0,0,0,.25)}.evs figure>div{border-radius:0}.evs small{color:#4E645D}.evs figcaption{padding:.8rem 1rem 1rem}
+.chip{display:inline-block;background:var(--bg);color:var(--text)!important;font-weight:700;border-radius:999px;padding:.1rem .7rem;margin:.3rem .3rem 0 0;font-size:.9rem}.rc{border-left-color:var(--blue)!important}
+
+.brand{font-size:clamp(.95rem,3.4vw,1.15rem)}
+.full{grid-column:1/-1}.lb{display:block;font-size:.93rem;margin-bottom:.3rem}
+.gf fieldset{background:var(--bg);border:0;border-left:8px solid var(--blue)}
+.grp{margin:1.2rem 0}.grp h3{font-size:1.1rem;margin:0 0 .5rem;padding-left:.7rem;border-left:6px solid var(--teal)}
+.grp .dl{margin:0}
+.rg h4{margin:.8rem 0 .2rem;font:700 .82rem Nunito,sans-serif;color:var(--muted)}.rg p{margin:.2rem 0 0}
+.mv{display:grid;gap:1.1rem;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));margin-top:1.2rem}
+.mv .card p{color:var(--text)}
+.addr{background:linear-gradient(135deg,#0B4F3C,#12805C 70%,#1D6FB8);color:#fff;border-radius:28px;padding:clamp(1.3rem,4vw,2.2rem);margin-top:2.5rem}
+.addr h2{margin-top:0}.addr .ag{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.addr .ag b{display:block;font-size:.88rem;font-weight:600;opacity:.9}.addr a{font-weight:700}
+
+/* Ukurasa wa mgonjwa: kijivu hafifu, kijani hafifu, bluu hafifu */
+body.pt{--blue:#27739A;--pink:#3F8F68;--teal:#6FB58F;--orange:#7C8B95;--yellow:#CDEBD9;--bg:#EDF0F1;--card:#fff;--text:#1F2D2A;--muted:#52625D;--line:#D3DBD8}
+.pt .pill{box-shadow:0 8px 28px rgba(60,90,100,.14)}
+.pt .kh{background:linear-gradient(135deg,#DCEEF9,#DDF1E5 60%,#E8ECEE);color:#1F2D2A;border:1px solid #CFE0E8}
+.pt .ph{background:#CDEBD9;border-color:#fff}
+.pt .up{background:#fff;color:#1F5F82;border:1px solid #CFE0E8}
+.pt .btn{background:#CDEBD9;color:#1F2D2A}
+.pt .btn.b,.pt .sm,.pt .mb,.pt nav a.on,.pt .acts a.on{background:#BFE0F3;color:#123A52}
+.pt .sm.x{background:#F3D9DE;color:#7A1F31}
+.pt .grp{border-radius:22px;padding:.9rem 1rem 1rem}
+.pt .grp:nth-of-type(3n+1){background:#E8ECEE}.pt .grp:nth-of-type(3n+1) h3{border-color:#9AA9B3}
+.pt .grp:nth-of-type(3n+2){background:#E3F3EA}.pt .grp:nth-of-type(3n+2) h3{border-color:#6FB58F}
+.pt .grp:nth-of-type(3n){background:#E1EFF8}.pt .grp:nth-of-type(3n) h3{border-color:#7DB6DA}
+.pt .dl div{background:#fff}.pt .dl b{color:#3D5A52}
+.pt .panel{border-top-color:#8FCDB0}.pt .panel.t{border-top-color:#7DB6DA}
+.pt input,.pt select,.pt textarea{background:#fff}
+.pt .gf fieldset:nth-of-type(3n+1){background:#E8ECEE;border-left-color:#9AA9B3}
+.pt .gf fieldset:nth-of-type(3n+2){background:#E3F3EA;border-left-color:#6FB58F}
+.pt .gf fieldset:nth-of-type(3n){background:#E1EFF8;border-left-color:#7DB6DA}
+.pt .tl li{background:#fff}
+.pt .rc:nth-child(3n+1){border-left-color:#9AA9B3!important}
+.pt .rc:nth-child(3n+2){border-left-color:#6FB58F!important}
+.pt .rc:nth-child(3n){border-left-color:#7DB6DA!important}
+.pt .chip{background:#EDF0F1}
+.pt legend{color:#27596F}
+
+/* Ripoti ya PDF */
+#pr{display:none}
+@media print{
+ @page{margin:14mm}
+ body>*:not(#pr){display:none!important}
+ body{background:#fff!important;color:#000!important}
+ #pr{display:block;font:11pt/1.45 Arial,Helvetica,sans-serif;color:#000;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ #pr h1{font:700 20pt Arial,sans-serif;margin:0 0 2pt;color:#1B5E43}
+ #pr h2{font:700 15pt Arial,sans-serif;margin:12pt 0 4pt}
+ #pr h3{font:700 12pt Arial,sans-serif;margin:12pt 0 4pt;padding:3pt 6pt;background:#E3F3EA;break-after:avoid}
+ #pr h4{font:700 11pt Arial,sans-serif;margin:0 0 3pt}
+ #pr p{margin:0 0 4pt}
+ #pr .rh{border-bottom:3pt solid #6FB58F;padding-bottom:6pt}
+ #pr table{min-width:0;width:100%;border-collapse:collapse;margin-bottom:6pt}
+ #pr th{width:38%;background:#EDF0F1;font-weight:700;border:1px solid #C9D3CF;padding:3pt 6pt;vertical-align:top}
+ #pr td{border:1px solid #C9D3CF;padding:3pt 6pt;vertical-align:top}
+ #pr tr{break-inside:avoid}
+ #pr .rp{break-inside:avoid;border-left:4pt solid #7DB6DA;background:#F3F8FB;padding:5pt 8pt;margin:6pt 0}
+ #pr .sg{margin-top:14pt;padding-top:6pt;border-top:1px solid #C9D3CF;font-size:9pt;color:#444}
+}
+
+/* ===== v7: muundo wa kisasa (Flexbox, Grid, tokens, icons) ===== */
+:root{--sh:0 1px 2px rgba(20,50,40,.06),0 10px 28px rgba(20,50,40,.07);--sh2:0 2px 4px rgba(20,50,40,.06),0 18px 40px rgba(20,50,40,.13)}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+h1,h2,h3{text-wrap:balance;letter-spacing:-.01em}
+p{text-wrap:pretty}
+.ic{width:1.2em;height:1.2em;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* Header */
+.pill{background:color-mix(in srgb,var(--card) 90%,transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid color-mix(in srgb,var(--line) 70%,transparent)}
+.brand{display:inline-flex;align-items:center;gap:.5rem}
+.brand .ic{color:var(--pink);width:1.3em;height:1.3em}
+nav a,.acts a{display:inline-flex;align-items:center;gap:.4rem;transition:background .2s,color .2s}
+@media(max-width:820px){.mb{display:inline-flex;align-items:center;gap:.4rem}}
+
+/* Buttons */
+.btn,.sm{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;transition:transform .15s,box-shadow .15s,filter .15s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(15,50,40,.18)}
+.btn:active{transform:none;box-shadow:none}
+summary.btn{display:inline-flex}
+.sm .ic{width:1em;height:1em}
+
+/* Hero */
+.hero2{position:relative;overflow:hidden;isolation:isolate}
+.hero2::after{content:"";position:absolute;right:-90px;bottom:-130px;width:340px;height:340px;border-radius:50%;border:46px solid rgba(255,255,255,.07);z-index:-1}
+.hero2 h1{letter-spacing:-.02em}
+.tile{transition:transform .2s}.tile:hover{transform:translateY(-4px)}
+
+/* Stats */
+.st{display:flex;align-items:center;gap:.9rem;box-shadow:var(--sh)}
+.si{display:grid;place-items:center;width:46px;height:46px;border-radius:14px;background:color-mix(in srgb,var(--blue) 14%,var(--card));color:var(--blue);flex:none}
+.si .ic{width:1.4rem;height:1.4rem}
+
+/* Cards, panels */
+.card,.panel,.tl li,.tw{box-shadow:var(--sh)}
+.card{transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-3px);box-shadow:var(--sh2)}
+.ci{display:grid;place-items:center;width:52px;height:52px;border-radius:16px;margin-bottom:.9rem;background:color-mix(in srgb,var(--c,var(--blue)) 16%,var(--card));color:var(--c,var(--blue))}
+.ci .ic{width:1.6rem;height:1.6rem}
+#p-home>h2::after,#p-home>section>h2::after,#galS>h2::after{content:"";display:block;width:56px;height:5px;border-radius:9px;background:var(--pink);margin-top:.55rem}
+.hi{display:flex;align-items:center;gap:.6rem;margin-top:1.8rem}
+.hi .ic{color:var(--blue);width:1.25em;height:1.25em}
+.panel h3.hi{margin-top:0}
+.bk a{display:inline-flex;align-items:center;gap:.4rem;text-decoration:none}
+
+/* Forms */
+input,select,textarea{transition:border-color .15s,box-shadow .15s}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 4px color-mix(in srgb,var(--blue) 20%,transparent)}
+input[type=checkbox]{accent-color:var(--pink);width:1.05rem;height:1.05rem}
+.chk label{padding:.4rem .85rem;border:2px solid var(--line);border-radius:999px;background:var(--card);cursor:pointer;transition:background .15s,border-color .15s}
+.chk label:has(input:checked){background:color-mix(in srgb,var(--pink) 16%,var(--card));border-color:var(--pink)}
+
+/* Tables */
+.tw{border:1px solid var(--line)}
+th{font-size:.85rem;font-weight:700;color:var(--muted);white-space:nowrap}
+tbody tr:nth-child(even){background:color-mix(in srgb,var(--bg) 55%,transparent)}
+tbody tr:hover{background:color-mix(in srgb,var(--blue) 8%,var(--card))}
+td .sm{margin:.1rem .1rem .1rem 0}
+
+/* Address block (home, bottom) */
+.addr .ag>div{display:flex;align-items:center;gap:.9rem}
+.addr .ai{display:grid;place-items:center;width:46px;height:46px;border-radius:14px;background:rgba(255,255,255,.16);flex:none}
+.addr .ai .ic{width:1.35rem;height:1.35rem}
+.addr .ag span:last-child{display:block}
+
+/* Footer */
+footer.ft{text-align:left;background:var(--card);border-top:1px solid var(--line);margin-top:2rem;padding:2.5rem 0 1.5rem;color:var(--muted)}
+.ftg{display:grid;gap:2rem;grid-template-columns:1.5fr 1fr 1fr}
+.ft b{display:block;font:600 1.05rem Fredoka,sans-serif;color:var(--text);margin-bottom:.5rem}
+.ft p{margin:0}
+.ft a,.ft span.r{display:flex;align-items:center;gap:.5rem;text-decoration:none;color:var(--muted);padding:.2rem 0}
+.ft a:hover{color:var(--blue)}
+.ft .fc{border-top:1px solid var(--line);margin:1.8rem 0 0;padding-top:1rem;text-align:center;font-size:.9rem}
+@media(max-width:820px){.ftg{grid-template-columns:1fr}}
+
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+@media(max-width:820px){.brand{flex:1 1 0;min-width:0;line-height:1.2}.mb{flex:none}.acts a{padding:.5rem .8rem}}
+
+/* Matukio: kijivu hafifu */
+.evs{background:linear-gradient(135deg,#EEF1F3,#DCE1E4);color:#1F2D2A}
+.evs h2,.evs p{color:#1F2D2A}
+.evs figure{box-shadow:0 8px 22px rgba(40,55,60,.14)}
+/* Navigation: bluu ya bahari iliyokoza */
+body .pill{background:#0B6E8A;border:1px solid rgba(255,255,255,.18);box-shadow:0 8px 28px rgba(11,80,105,.35)}
+body .pill .brand{color:#fff}
+body .pill .brand .ic{color:#9BE7BF}
+body .pill nav a,body .pill .acts a{color:rgba(255,255,255,.94)}
+body .pill nav a:hover,body .pill .acts a:hover{background:rgba(255,255,255,.16);color:#fff}
+body .pill nav a.on,body .pill .acts a.on{background:#fff;color:#0B5A73}
+body .pill .acts a.cta{background:#CDEBD9;color:#12352C}
+body .pill .acts a.cta.on{background:#fff;color:#0B5A73}
+body .pill .mb{background:rgba(255,255,255,.18);color:#fff}
+@media(min-width:821px){body .pill nav a,body .pill .acts a{padding:.5rem .65rem;font-size:.95rem}.brand{min-width:0;flex:0 1 210px}}
+@media(max-width:820px){body .pill nav{background:#0B6E8A;border:1px solid rgba(255,255,255,.18)}}
+
+/* ===== v7: simu (mobile-first marekebisho) ===== */
+.sm,.btn,.mb,.tabs button,summary.btn{font-family:inherit}
+.sm{font-weight:700;font-size:.9rem}
+html{-webkit-text-size-adjust:100%}
+a,button,label,summary{-webkit-tap-highlight-color:transparent}
+.chip{overflow-wrap:anywhere}
+.ah h2 .ic{color:#fff}
+.st{min-width:0}.st>div{min-width:0;overflow-wrap:anywhere}
+.stats,#hSt,#aSt{display:grid;gap:.8rem;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.lt{white-space:nowrap}
+
+@media(max-width:820px){
+ .pill{flex-wrap:nowrap;gap:.4rem;padding:.4rem .5rem .4rem 1rem;border-radius:999px}
+ .brand{order:0;flex:1 1 0;min-width:0;line-height:1.15}
+ .acts{order:1;width:auto;flex:none;justify-content:flex-end}
+ .mb{order:2;flex:none}
+ nav{order:3}
+ nav a{padding:.85rem 1rem;justify-content:flex-start;text-align:left}
+}
+@media(max-width:640px){
+ .acts .lt,.mb .lt{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%)}
+ .acts a,.mb{padding:.7rem;min-width:44px;min-height:44px;justify-content:center}
+ .acts a .ic,.mb .ic{width:1.35em;height:1.35em}
+ .brand{font-size:.92rem}
+ .pill{width:calc(100% - 1rem)}
+
+ /* Hero */
+ .hero2 h1{font-size:clamp(1.9rem,9vw,2.5rem)}
+ .hero2 p{font-size:1.02rem}
+ .hero2 .row{flex-direction:column;align-items:stretch}
+ .hero2 .row .btn{width:100%}
+
+ /* Takwimu: safu mbili, ya mwisho ikijaa upana */
+ #hSt,#aSt{grid-template-columns:1fr 1fr}
+ #hSt .st:last-child:nth-child(odd),#aSt .st:last-child:nth-child(odd){grid-column:1/-1}
+ .st{padding:.9rem}.si{width:40px;height:40px}
+
+ /* Ukurasa wa mtoto */
+ .kh{padding:1.2rem}
+ .kh .row{flex-direction:column;align-items:stretch!important}
+ .kh .row .btn,.kh .row .up{width:100%;justify-content:center;text-align:center}
+
+ /* Fomu */
+ input,select,textarea{font-size:16px}
+ .btn,.sm{min-height:44px}
+ form>.btn,form .btn.b{width:100%}
+ fieldset{padding:1rem}
+ .panel{padding:1.1rem}
+ summary.btn{width:100%}
+
+ /* Majedwali kuwa kadi */
+ .tw{border:0;box-shadow:none;background:transparent;overflow:visible;margin:.8rem 0}
+ .tw table{display:block;min-width:0!important}
+ .tw thead{display:none}
+ .tw tbody{display:grid;gap:.8rem}
+ .tw tr,tbody tr:nth-child(even),tbody tr:hover{background:var(--card)}
+ .tw tr{display:grid;gap:.4rem;border-radius:20px;padding:.9rem 1rem;box-shadow:var(--sh)}
+ .tw td{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:0;border:0;text-align:right;overflow-wrap:anywhere}
+ .tw td::before{content:attr(data-l);font-weight:700;color:var(--muted);text-align:left;flex:none}
+ .tw td:not([data-l]){justify-content:flex-start;flex-wrap:wrap;text-align:left;padding-top:.4rem;border-top:1px solid var(--line)}
+ .tw td:not([data-l])::before{content:none}
+ .tw td .sm{flex:1 1 auto}
+
+ /* Vichwa vya sehemu */
+ .hi{margin-top:1.4rem}
+ .addr{padding:1.3rem}
+}
+
+/* ===== Ukumbusho na malipo ===== */
+a.sm{text-decoration:none}
+.bd{display:inline-block;white-space:nowrap;padding:.15rem .65rem;border-radius:999px;font-size:.82rem;font-weight:700;background:#E8ECEE;color:#33443F}
+.tw td .bd{flex:none}
+.bd.w{background:#FFF1CC;color:#6B4A00}.bd.r{background:#FBDDE2;color:#8A1C33}.bd.ok{background:#DCF2E5;color:#1D6B47}
+.rm{display:flex;align-items:center;gap:.9rem;background:#E1EFF8;color:#123A52;border-radius:20px;padding:1rem 1.2rem;margin:1rem 0;border-left:8px solid #7DB6DA}
+.rm .ic{width:1.7rem;height:1.7rem;flex:none}.rm b{display:block}
+#bankBox{margin:1.5rem auto 0}
+#bankBox .dl div{display:flex;flex-direction:column;align-items:flex-start}
+#bankBox h3{margin:1.2rem 0 .6rem}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="i-home" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></symbol><symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol><symbol id="i-user" viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol><symbol id="i-heart" viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></symbol><symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol><symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol><symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol><symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol><symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></symbol><symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol><symbol id="i-food" viewBox="0 0 24 24"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></symbol><symbol id="i-access" viewBox="0 0 24 24"><circle cx="16" cy="4" r="1"/><path d="m18 19 1-7-6 1"/><path d="m5 8 3-3 5.5 3-2.36 3.5"/><path d="M4.24 14.5a5 5 0 0 0 6.88 6"/><path d="M13.76 17.5a5 5 0 0 0-6.88-6"/></symbol><symbol id="i-smile" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></symbol><symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></symbol><symbol id="i-flag" viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" x2="4" y1="22" y2="15"/></symbol><symbol id="i-link" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></symbol><symbol id="i-lock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol><symbol id="i-login" viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" x2="3" y1="12" y2="12"/></symbol><symbol id="i-logout" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/></symbol><symbol id="i-layout" viewBox="0 0 24 24"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></symbol><symbol id="i-menu" viewBox="0 0 24 24"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></symbol><symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></symbol><symbol id="i-pencil" viewBox="0 0 24 24"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></symbol><symbol id="i-activity" viewBox="0 0 24 24"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/></symbol><symbol id="i-image" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></symbol><symbol id="i-camera" viewBox="0 0 24 24"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></symbol><symbol id="i-building" viewBox="0 0 24 24"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01M16 6h.01M12 6h.01M12 10h.01M12 14h.01M16 10h.01M16 14h.01M8 10h.01M8 14h.01"/></symbol><symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></symbol><symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol><symbol id="i-send" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></symbol><symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></symbol><symbol id="i-sms" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol><symbol id="i-chat" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol><symbol id="i-card" viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></symbol><symbol id="i-copy" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></symbol><symbol id="i-ext" viewBox="0 0 24 24"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol></svg>
+<header>
+<div class="pill">
+<a class="brand" href="#/"><svg class="ic" aria-hidden="true"><use href="#i-heart"/></svg>Dhuran Supporting Organization</a>
+<button class="mb" id="mb" aria-expanded="false" aria-controls="nv" aria-label="Menyu"><svg class="ic" aria-hidden="true"><use href="#i-menu"/></svg><span class="lt">Menyu</span></button>
+<nav id="nv" aria-label="Menyu kuu">
+<a href="#/" data-r="home"><svg class="ic" aria-hidden="true"><use href="#i-home"/></svg>Nyumbani</a>
+<a href="#/uongozi" data-r="uongozi"><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg>Uongozi</a>
+<a href="#/changia" data-r="changia"><svg class="ic" aria-hidden="true"><use href="#i-heart"/></svg>Mchangiaji</a>
+<a href="#/wasiliana" data-r="wasiliana"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>Wasiliana</a>
+</nav>
+<div class="acts"><a href="#/ingia" data-r="ingia" id="nLog"><svg class="ic" aria-hidden="true"><use href="#i-user"/></svg><span class="lt">Mzazi</span></a><a class="cta" href="#/msimamizi" data-r="msimamizi" id="nAd"><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg><span class="lt">Msimamizi</span></a><a href="#/" id="nOut" hidden><svg class="ic" aria-hidden="true"><use href="#i-logout"/></svg><span class="lt">Toka</span></a></div>
+</div>
+</header>
+
+<main class="w">
+
+<section class="pg" id="p-home">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><g id="hd"><circle cx="60" cy="36" r="16" fill="#7B4B2F"/><path d="M44 32a16 14 0 0 1 32 0z" fill="#1E1B3A"/><circle cx="55" cy="38" r="2" fill="#fff"/><circle cx="65" cy="38" r="2" fill="#fff"/><path d="M54 44q6 5 12 0" stroke="#fff" stroke-width="2" fill="none"/></g></defs></svg>
+<div class="hero2">
+<div><h1>Tunawajali watoto wanaohitaji msaada zaidi.</h1>
+<p>Dhuran Supporting Organization, kupitia Kituo cha Matumaini, inawahudumia watoto wenye ulemavu, changamoto za afya ya akili na utapiamlo, kwa upendo na utaalamu.</p>
+<div class="row"><a class="btn" href="#/changia"><svg class="ic" aria-hidden="true"><use href="#i-heart"/></svg>Msaidie mtoto</a><a class="btn o" href="#/ingia"><svg class="ic" aria-hidden="true"><use href="#i-login"/></svg>Ingia kama mzazi</a></div></div>
+<div class="mos">
+<div class="tile a"><svg viewBox="0 0 120 120" role="img" aria-label="Mtoto kwenye kiti cha magurudumu"><use href="#hd"/><rect x="44" y="54" width="32" height="32" rx="12" fill="#FFC93C"/><rect x="46" y="84" width="30" height="8" rx="4" fill="#1E1B3A"/><circle cx="60" cy="96" r="20" fill="none" stroke="#1E1B3A" stroke-width="5"/><circle cx="60" cy="96" r="3" fill="#1E1B3A"/></svg>Watoto wenye ulemavu</div>
+<div class="tile b"><svg viewBox="0 0 120 120" role="img" aria-label="Mtoto na moyo wa upendo"><use href="#hd"/><rect x="40" y="54" width="40" height="52" rx="16" fill="#3B4BF0"/><path d="M60 100c-22-14-16-30-6-30 4 0 6 3 6 5 0-2 2-5 6-5 10 0 16 16-6 30z" fill="#FF4F8B"/></svg>Afya ya akili</div>
+<div class="tile c"><svg viewBox="0 0 120 120" role="img" aria-label="Mtoto akila uji"><use href="#hd"/><rect x="46" y="54" width="28" height="44" rx="12" fill="#FF8A2B"/><path d="M34 84h52a26 26 0 0 1-52 0z" fill="#fff"/><path d="M50 78q-4-6 0-10M60 78q-4-6 0-10M70 78q-4-6 0-10" stroke="#1E1B3A" stroke-width="3" fill="none" stroke-linecap="round"/></svg>Watoto wenye utapiamlo</div>
+</div></div>
+<div class="sts" id="hSt"></div>
+<h2>Tunachofanya kwa kila mtoto</h2>
+<div class="grid">
+<div class="card"><span class="ci"><svg class="ic" aria-hidden="true"><use href="#i-food"/></svg></span><h3>Lishe na utapiamlo</h3><p>Vipimo vya uzito, chakula chenye virutubisho na ufuatiliaji wa ukuaji.</p></div>
+<div class="card"><span class="ci"><svg class="ic" aria-hidden="true"><use href="#i-access"/></svg></span><h3>Ulemavu</h3><p>Mazoezi ya viungo, vifaa saidizi na ushauri wa kitaalamu.</p></div>
+<div class="card"><span class="ci"><svg class="ic" aria-hidden="true"><use href="#i-smile"/></svg></span><h3>Afya ya akili</h3><p>Ushauri nasaha, tiba na mazingira salama ya kujifunza na kucheza.</p></div>
+<div class="card"><span class="ci"><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg></span><h3>Msaada kwa familia</h3><p>Elimu ya lishe na malezi kwa wazazi na walezi.</p></div>
+</div>
+<div id="galS" hidden><h2 style="margin-top:2.5rem">Picha za kituo</h2><div class="galg" id="gal"></div></div>
+<div id="evS" class="evs"><h2>Matukio ya hivi karibuni</h2><p>Shughuli za watoto wetu kwa picha na video.</p><div class="galg ev" id="ev"></div></div>
+<section aria-labelledby="mvH">
+<h2 id="mvH" style="margin-top:2.5rem">Dira na dhamira yetu</h2>
+<p>Dhuran Supporting Organization ni shirika linalosaidia watoto wenye ulemavu, changamoto za afya ya akili na utapiamlo, lenye ofisi yake Makunduchi, Kusini Unguja.</p>
+<div class="mv">
+<div class="card"><span class="ci"><svg class="ic" aria-hidden="true"><use href="#i-eye"/></svg></span><h3>Dira</h3><p>Kuwa na jamii ambamo kila mtoto, hasa mwenye ulemavu, changamoto za afya ya akili au utapiamlo, anapata afya bora, elimu na nafasi sawa ya kufikia ndoto zake.</p></div>
+<div class="card"><span class="ci"><svg class="ic" aria-hidden="true"><use href="#i-flag"/></svg></span><h3>Dhamira</h3><p>Kuwahudumia watoto wenye mahitaji maalum kwa lishe bora, matibabu, ushauri nasaha na vifaa saidizi; kuwajengea wazazi na walezi uwezo wa malezi; na kushirikiana na jamii na wadau ili michango itumike kwa uwazi na uwajibikaji.</p></div>
+</div>
+<div class="grid">
+<div class="card"><span class="ci"><svg class="ic" aria-hidden="true"><use href="#i-heart"/></svg></span><h3>Upendo</h3><p>Kila mtoto anapokelewa kwa huruma na kuheshimiwa.</p></div>
+<div class="card"><span class="ci"><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg></span><h3>Uwazi</h3><p>Michango na matumizi yake yanaonekana na kuripotiwa.</p></div>
+<div class="card"><span class="ci"><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg></span><h3>Usawa</h3><p>Watoto wote wanapata huduma bila ubaguzi.</p></div>
+<div class="card"><span class="ci"><svg class="ic" aria-hidden="true"><use href="#i-link"/></svg></span><h3>Ushirikiano</h3><p>Tunafanya kazi pamoja na wazazi, walezi na jamii.</p></div>
+</div>
+</section>
+</section>
+
+<section class="pg" id="p-uongozi" hidden>
+<h2>Uongozi wa kituo</h2><p>Timu inayosimamia huduma na usalama wa watoto wetu.</p>
+<div class="grid">
+<div class="card"><div class="av">MK</div><h3>Jina la Mkurugenzi</h3><p>Mkurugenzi Mtendaji. Anasimamia mwelekeo na huduma zote za kituo.</p></div>
+<div class="card"><div class="av">MM</div><h3>Jina la Muuguzi Mkuu</h3><p>Muuguzi Mkuu. Anaongoza vipimo, chanjo na matibabu.</p></div>
+<div class="card"><div class="av">ML</div><h3>Jina la Mtaalamu wa Lishe</h3><p>Anapanga mlo na kufuatilia ukuaji wa watoto wenye utapiamlo.</p></div>
+<div class="card"><div class="av">MT</div><h3>Jina la Mtaalamu wa Tiba ya Mwili</h3><p>Anasimamia mazoezi na vifaa saidizi kwa watoto wenye ulemavu.</p></div>
+<div class="card"><div class="av">MH</div><h3>Jina la Mhasibu</h3><p>Anahakikisha michango inatumika kwa uwazi.</p></div>
+<div class="card"><div class="av">MW</div><h3>Jina la Mratibu wa Wazazi</h3><p>Anawasaidia wazazi na walezi kupata huduma.</p></div>
+</div>
+</section>
+
+<section class="pg" id="p-changia" hidden>
+<div class="panel t">
+<h2>Mchangiaji: msaidie mtoto</h2>
+<p>Unaweza kumsaidia mtoto mmoja au kuchagua huduma zote. Kituo kitawasiliana nawe kukamilisha mchango.</p>
+<form id="donF">
+<div><label for="dKid">Unamsaidia nani?</label><select id="dKid"></select></div>
+<div><label>Huduma</label><div class="chk"><label><input type="checkbox" name="hd" value="Lishe">Lishe</label><label><input type="checkbox" name="hd" value="Matibabu">Matibabu</label><label><input type="checkbox" name="hd" value="Elimu">Elimu</label><label><input type="checkbox" name="hd" value="Vifaa saidizi">Vifaa saidizi</label></div><p class="msg" style="margin-top:.5rem">Usipochagua, mchango unahesabiwa kwa huduma zote.</p></div>
+<fieldset><legend>Taarifa za mchangiaji</legend>
+<div class="two"><div><label for="dAina">Aina ya mchangiaji</label><select id="dAina"><option>Mtu binafsi</option><option>Kampuni</option><option>Taasisi au shirika</option></select></div><div><label for="dJina">Jina kamili au la kampuni</label><input id="dJina" required></div></div>
+<div class="two"><div><label for="dSimu">Namba ya simu</label><input id="dSimu" type="tel" required></div><div><label for="dEmail">Barua pepe</label><input id="dEmail" type="email"></div></div>
+<div class="two"><div><label for="dMakazi">Nchi na mkoa</label><input id="dMakazi" placeholder="Tanzania, Dar es Salaam" required></div><div><label for="dAnwani">Mtaa au anwani ya makazi</label><input id="dAnwani"></div></div></fieldset>
+<fieldset><legend>Mchango wako</legend>
+<div class="two"><div><label for="dKiasi">Kiasi (TSh)</label><input id="dKiasi" type="number" min="1000" required></div><div><label for="dMara">Utachangia mara ngapi?</label><select id="dMara"><option>Mara moja</option><option>Kila mwezi</option><option>Kila robo mwaka</option></select></div></div>
+<div><label for="dLipa">Njia ya malipo unayopendelea</label><select id="dLipa"><option>M-Pesa</option><option>Tigo Pesa</option><option>Airtel Money</option><option>Benki</option><option>Fedha taslimu kituoni</option></select></div>
+<div><label for="dUj">Ujumbe kwa kituo (si lazima)</label><textarea id="dUj"></textarea></div>
+<div class="chk"><label><input type="checkbox" id="dSiri">Sitaki jina langu litajwe hadharani</label></div></fieldset>
+<button class="btn b" type="submit"><svg class="ic" aria-hidden="true"><use href="#i-heart"/></svg>Tuma mchango</button>
+</form><div id="donOut" role="status"></div>
+</div>
+<div class="panel" id="bankBox"></div>
+</section>
+
+<section class="pg" id="p-wasiliana" hidden>
+<h2>Wasiliana nasi</h2><p>Karibu kituoni au tuandikie.</p>
+<div class="grid">
+<div class="card"><span class="ci"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg></span><h3>Anwani</h3><p>Makunduchi, Mkoa wa Kusini Unguja</p></div>
+<div class="card"><span class="ci"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg></span><h3>Simu</h3><p><a href="tel:+255780981880">0780 981 880</a></p></div>
+<div class="card"><span class="ci"><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg></span><h3>Barua pepe</h3><p><a href="mailto:info@kituo-matumaini.example">info@kituo-matumaini.example</a></p></div>
+<div class="card"><span class="ci"><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg></span><h3>Saa za kazi</h3><p>Jumatatu hadi Ijumaa, 2:00 asubuhi hadi 10:00 jioni</p></div>
+</div>
+<div class="panel t" style="margin-top:1.5rem">
+<h3>Tuandikie ujumbe</h3>
+<form id="cF"><div class="two"><div><label for="cJ">Jina</label><input id="cJ" required></div><div><label for="cS">Simu</label><input id="cS" type="tel" required></div></div>
+<div><label for="cM">Ujumbe</label><textarea id="cM" required></textarea></div><button class="btn b" type="submit"><svg class="ic" aria-hidden="true"><use href="#i-send"/></svg>Tuma ujumbe</button></form><div id="cOut" role="status"></div>
+</div>
+</section>
+
+<section class="pg" id="p-ingia" hidden>
+<div class="panel">
+<h2 class="hi" style="margin-top:0"><svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg>Ingia</h2>
+<div class="tabs"><button id="tP" class="on" type="button">Mzazi</button><button id="tA" type="button">Msimamizi</button></div>
+<form id="lgP"><div><label for="lNo">Namba ya usajili wa mtoto</label><input id="lNo" placeholder="KM-0001" required></div><div><label for="lPw">Nenosiri</label><input id="lPw" type="password" required></div><button class="btn b" type="submit"><svg class="ic" aria-hidden="true"><use href="#i-login"/></svg>Ingia</button><p>Namba na nenosiri hutolewa na kituo baada ya mtoto kusajiliwa.</p></form>
+<form id="lgA" hidden><div><label for="aPw">Nenosiri la msimamizi</label><input id="aPw" type="password" required></div><button class="btn b" type="submit"><svg class="ic" aria-hidden="true"><use href="#i-login"/></svg>Ingia kama msimamizi</button></form>
+<div id="lOut" role="status"></div>
+</div>
+</section>
+
+
+<section class="pg" id="p-akaunti" hidden><div id="kid"></div></section>
+
+<section class="pg" id="p-admin" hidden>
+<div class="ah"><h2 class="hi" style="margin:0"><svg class="ic" aria-hidden="true"><use href="#i-layout"/></svg>Dashibodi ya msimamizi</h2><button class="btn" id="aOut" type="button"><svg class="ic" aria-hidden="true"><use href="#i-logout"/></svg>Toka</button></div>
+<div class="sts" id="aSt"></div>
+<details class="panel" style="max-width:none;margin-bottom:1.5rem"><summary class="btn b"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg>Sajili mtoto mpya</summary><p style="margin-top:1rem">Baada ya kusajili, utapewa namba na nenosiri la kumpa mzazi.</p><form id="regF" class="gf"></form><div id="regOut" role="status"></div></details>
+<h3 class="hi"><svg class="ic" aria-hidden="true"><use href="#i-bell"/></svg>Ukumbusho wa kliniki</h3>
+<div class="panel t" style="max-width:none"><p>Watoto wenye kliniki ndani ya siku 14 zijazo, au zilizopita hivi karibuni. Bonyeza SMS au WhatsApp ili kumtumia mzazi ujumbe kutoka kwenye simu yako.</p><label for="tplT">Ujumbe unaotumwa</label><textarea id="tplT" rows="4"></textarea><p style="margin:.4rem 0 0;font-size:.9rem">Unaweza kutumia {mzazi}, {mtoto}, {tarehe} na {siku}; zitajazwa kiotomatiki.</p><div class="row"><button class="btn b" id="tplS" type="button">Hifadhi ujumbe</button><button class="btn" id="tplR" type="button">Rudisha wa kawaida</button></div><div id="tplOut" role="status"></div></div>
+<div class="tw"><table><thead><tr><th>Mtoto</th><th>Mzazi</th><th>Kliniki</th><th>Hali</th><th></th></tr></thead><tbody id="aRem"></tbody></table></div>
+<h3 class="hi"><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg>Watoto wote</h3>
+<input id="aq" placeholder="Tafuta kwa jina, namba au mzazi" aria-label="Tafuta">
+<div class="tw"><table><thead><tr><th>Namba</th><th>Mtoto</th><th>Hali</th><th>Mzazi</th><th>Nenosiri</th><th></th></tr></thead><tbody id="aTb"></tbody></table></div>
+<h3 class="hi"><svg class="ic" aria-hidden="true"><use href="#i-camera"/></svg>Matukio na shughuli za watoto</h3>
+<div class="panel t" style="max-width:none"><p>Tuma picha au video ya shughuli. Tarehe na saa vinaandikwa kiotomatiki, na tukio linaonekana ukurasa wa mwanzo.</p><form id="evF"><div><label for="evC">Maelezo ya tukio</label><input id="evC" required></div><div class="two"><div><label for="evImg">Pakia picha</label><input id="evImg" type="file" accept="image/*"></div><div><label for="evVid">Pakia video (hadi MB 20)</label><input id="evVid" type="file" accept="video/*"></div></div><button class="btn b" type="submit">Tuma tukio</button></form><div id="eOut" role="status"></div><div class="galg ev" id="aEv"></div></div>
+<h3 class="hi"><svg class="ic" aria-hidden="true"><use href="#i-image"/></svg>Picha za watoto wa kituo</h3>
+<div class="panel t" style="max-width:none"><p>Pakia picha halisi za kituo. Pata idhini ya mzazi au mlezi kabla ya kuweka picha ya mtoto.</p><form id="galF"><div class="two"><div><label for="gC">Maelezo mafupi</label><input id="gC" required></div><div><label for="gF">Picha</label><input id="gF" type="file" accept="image/*" required></div></div><button class="btn b" type="submit">Pakia picha</button></form><div class="galg" id="aGal"></div></div>
+<h3 class="hi"><svg class="ic" aria-hidden="true"><use href="#i-heart"/></svg>Michango</h3>
+<div class="tw"><table style="min-width:1000px"><thead><tr><th>Tarehe</th><th>Mchangiaji</th><th>Namba ya simu</th><th>Barua pepe</th><th>Anapoishi</th><th>Mtoto</th><th>Huduma</th><th>Malipo</th><th>Kiasi (TSh)</th></tr></thead><tbody id="aDn"></tbody></table></div>
+</section>
+
+</main>
+<footer class="ft"><div class="w"><div class="ftg"><div><b>Dhuran Supporting Organization</b><p>Tunawahudumia watoto wenye ulemavu, changamoto za afya ya akili na utapiamlo kwa upendo na utaalamu.</p></div><div><b>Viungo</b><a href="#/"><svg class="ic" aria-hidden="true"><use href="#i-home"/></svg>Nyumbani</a><a href="#/uongozi"><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg>Uongozi</a><a href="#/changia"><svg class="ic" aria-hidden="true"><use href="#i-heart"/></svg>Mchangiaji</a><a href="#/ingia"><svg class="ic" aria-hidden="true"><use href="#i-user"/></svg>Mzazi na msimamizi</a></div><div><b>Wasiliana</b><span class="r"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Makunduchi, Kusini Unguja</span><a href="tel:+255780981880"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>0780 981 880</a></div></div><p class="fc">© 2026 Dhuran Supporting Organization. Haki zote zimehifadhiwa.</p></div></footer>
+<div id="pr" aria-hidden="true"></div>
+
+<script>
+var K='kmData',ADMIN='admin123',D={kids:[],dons:[],gal:[],ev:[]},S={};
+/* TAARIFA ZA MALIPO YA BENKI: jaza hapa, kisha hifadhi faili. Zinaonekana kwenye ukurasa wa Mchangiaji.
+   Usiandike namba ya kadi ya mtu yeyote hapa. Kwa malipo ya kadi tumia 'link' ya huduma ya malipo (https://...). */
+var BANK={benki:'',jina:'',akaunti:'',tawi:'',swift:'',sarafu:'TZS',link:'',maelezo:''};
+var DTPL='Habari {mzazi}, ukumbusho kutoka Dhuran Supporting Organization: {mtoto} ana kliniki {siku} ({tarehe}). Tafadhali mlete kliniki. Kwa maelezo piga 0780 981 880.';
+try{D=JSON.parse(localStorage.getItem(K))||D}catch(x){}D.gal=D.gal||[];D.ev=D.ev||[];
+try{S=JSON.parse(sessionStorage.getItem('kmS'))||{}}catch(x){}
+function sv(){try{localStorage.setItem(K,JSON.stringify(D))}catch(x){alert('Hifadhi imejaa. Tumia picha ndogo.')}}
+function ss(){try{sessionStorage.setItem('kmS',JSON.stringify(S))}catch(x){}}
+function e(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function $(i){return document.getElementById(i)}
+function ic(n){return '<svg class="ic" aria-hidden="true"><use href="#i-'+n+'"/></svg>'}
+function today(){return new Date().toLocaleDateString('sw-TZ')}
+function stat(n,l,i){return '<div class="st">'+(i?'<span class="si">'+ic(i)+'</span>':'')+'<div><b>'+n+'</b>'+l+'</div></div>'}
+function msg(el,t,er){$(el).innerHTML='<div class="msg'+(er?' err':'')+'">'+t+'</div>'}
+function img(f,max,cb){var r=new FileReader();r.onload=function(){var i=new Image();i.onload=function(){var k=Math.min(1,max/Math.max(i.width,i.height)),c=document.createElement('canvas');c.width=i.width*k;c.height=i.height*k;c.getContext('2d').drawImage(i,0,0,c.width,c.height);cb(c.toDataURL('image/jpeg',.7))};i.src=r.result};r.readAsDataURL(f)}
+
+var P=['home','uongozi','changia','wasiliana','ingia','akaunti','admin','msimamizi'];
+function navState(){var a=S.role=='admin',m=S.role=='mzazi',l=$('nLog'),d=$('nAd');$('nOut').hidden=!S.role;l.hidden=a;d.hidden=m;l.innerHTML=ic('user')+'<span class="lt">'+(m?'Akaunti yangu':'Mzazi')+'</span>';l.setAttribute('href',m?'#/akaunti':'#/ingia');d.innerHTML=ic(a?'layout':'shield')+'<span class="lt">'+(a?'Dashibodi':'Msimamizi')+'</span>';d.setAttribute('href',a?'#/admin':'#/msimamizi')}
+function go(){
+ var r=location.hash.replace('#/','')||'home';if(P.indexOf(r)<0)r='home';
+ if(r=='akaunti'&&S.role=='admin'&&!S.view)r='admin';
+ if(r=='akaunti'&&!S.role)r='ingia';if(r=='admin'&&S.role!='admin')r='msimamizi';var pg=r=='msimamizi'?'ingia':r;if(pg=='ingia')tab(r=='ingia');
+ document.querySelectorAll('.pg').forEach(function(s){s.hidden=s.id!='p-'+pg});
+ var hl=r=='akaunti'?'ingia':(r=='admin'?'msimamizi':r);
+ document.querySelectorAll('header a[data-r]').forEach(function(a){a.classList.toggle('on',a.dataset.r==hl)});
+ $('nv').classList.remove('open');$('mb').setAttribute('aria-expanded','false');window.scrollTo(0,0);navState();document.body.classList.toggle('adm',S.role=='admin'&&r=='admin');document.body.classList.toggle('pt',r=='akaunti');
+ if(r=='home')$('hSt').innerHTML=stat(D.kids.length,'Watoto waliosajiliwa','users')+stat(D.dons.length,'Michango','heart')+stat(4,'Huduma kuu','activity');
+ if(r=='changia')$('dKid').innerHTML='<option value="">Mtoto yeyote anayehitaji msaada</option>'+D.kids.map(function(k){return '<option value="'+e(k.no)+'">'+e(k.no)+' - '+e(k.jina.split(' ')[0])+' ('+e(k.hali)+')</option>'}).join('');
+ if(r=='home'){renderEv('ev',false);$('galS').hidden=!D.gal.length;$('gal').innerHTML=D.gal.map(function(g){return '<figure><img alt="'+e(g.c)+'" src="'+g.img+'"><figcaption>'+e(g.c)+'</figcaption></figure>'}).join('')}
+ if(r=='akaunti')renderKid();if(r=='admin')renderAdmin();
+}
+window.addEventListener('hashchange',go);
+$('mb').onclick=function(){var o=$('nv').classList.toggle('open');this.setAttribute('aria-expanded',o)};
+$('nOut').onclick=function(ev){ev.preventDefault();S={};ss();location.hash='#/';go()};
+
+$('donF').onsubmit=function(ev){ev.preventDefault();
+ var h=[].slice.call(this.querySelectorAll('[name=hd]:checked')).map(function(x){return x.value});
+ D.dons.push({kid:$('dKid').value,huduma:h.join(', ')||'Huduma zote',kiasi:+$('dKiasi').value,aina:$('dAina').value,jina:$('dJina').value,simu:$('dSimu').value,email:$('dEmail').value,makazi:$('dMakazi').value,anwani:$('dAnwani').value,mara:$('dMara').value,lipa:$('dLipa').value,ujumbe:$('dUj').value,siri:$('dSiri').checked,siku:today()});sv();this.reset();
+ msg('donOut','Asante sana! Kituo kitawasiliana nawe kukamilisha mchango.')};
+$('cF').onsubmit=function(ev){ev.preventDefault();this.reset();msg('cOut','Ujumbe umepokelewa. Tutawasiliana nawe hivi karibuni.')};
+
+$('tP').onclick=function(){tab(1)};$('tA').onclick=function(){tab(0)};
+function tab(p){$('lgP').hidden=!p;$('lgA').hidden=!!p;$('tP').classList.toggle('on',!!p);$('tA').classList.toggle('on',!p);$('lOut').innerHTML=''}
+$('lgP').onsubmit=function(ev){ev.preventDefault();
+ var k=D.kids.filter(function(x){return x.no==$('lNo').value.trim().toUpperCase()&&x.pass==$('lPw').value})[0];
+ if(!k){msg('lOut','Namba ya usajili au nenosiri si sahihi.',1);return}
+ S={role:'mzazi',kid:k.no};ss();location.hash='#/akaunti';go()};
+$('lgA').onsubmit=function(ev){ev.preventDefault();
+ if($('aPw').value!=ADMIN){msg('lOut','Nenosiri si sahihi.',1);return}
+ S={role:'admin'};ss();location.hash='#/admin';go()};
+
+
+
+var DB;
+function idb(cb){if(DB)return cb(DB);try{var r=indexedDB.open('kmMedia',1);r.onupgradeneeded=function(){r.result.createObjectStore('m')};r.onsuccess=function(){DB=r.result;cb(DB)};r.onerror=function(){cb(null)}}catch(x){cb(null)}}
+function mput(k,v,cb){idb(function(d){if(!d)return cb(false);var t=d.transaction('m','readwrite');t.objectStore('m').put(v,k);t.oncomplete=function(){cb(true)};t.onerror=function(){cb(false)}})}
+function mget(k,cb){idb(function(d){if(!d)return cb(null);var q=d.transaction('m').objectStore('m').get(k);q.onsuccess=function(){cb(q.result)};q.onerror=function(){cb(null)}})}
+function mdel(k){idb(function(d){if(d)d.transaction('m','readwrite').objectStore('m').delete(k)})}
+function renderEv(t,adm){var el=$(t);
+ if(!D.ev.length&&!adm){el.innerHTML='<p>Matukio ya kituo yataonekana hapa punde.</p>';return}
+ el.innerHTML=D.ev.slice().reverse().map(function(x){return '<figure><div data-m="'+e(x.id)+'" data-v="'+(x.v?1:0)+'" data-c="'+e(x.c)+'"></div><figcaption><b>'+e(x.c)+'</b><small>'+(x.v?'Video: ':'Picha: ')+new Date(x.ts).toLocaleString('sw-TZ',{dateStyle:'medium',timeStyle:'short'})+'</small></figcaption>'+(adm?'<button class="sm x" data-x="'+e(x.id)+'">Futa</button>':'')+'</figure>'}).join('');
+ el.querySelectorAll('[data-m]').forEach(function(d){mget(d.dataset.m,function(u){if(!u)return;var v=d.dataset.v=='1',m=document.createElement(v?'video':'img');m.src=u;if(v){m.controls=true;m.preload='metadata'}else m.alt=d.dataset.c;d.appendChild(m)})})}
+var YN=['','Ndiyo','Hapana','Sijui'];
+var LV=['','Anaendana na umri','Amechelewa kidogo','Amechelewa sana','Amerudi nyuma'];
+var PF=[
+ {t:'Taarifa za mtoto',f:[
+  ['jina','Jina kamili','t',0,1],['tar','Tarehe ya kuzaliwa','d',0,1],
+  ['jinsia','Jinsia','s',['Mwanamke','Mwanaume']],['kundi','Kundi la damu','s',['','A','B','AB','O','Sijui']],
+  ['uzito','Uzito (kg)','n'],['urefu','Urefu (cm)','n'],
+  ['lugha','Lugha anayozungumza','t'],
+  ['hali','Anahitaji msaada gani','s',['Utapiamlo','Ulemavu wa viungo','Ulemavu wa kusikia au kuona','Ulemavu wa akili','Afya ya akili','Nyingine']]]},
+ {t:'Kuzaliwa na ukuaji wa awali',f:[
+  ['mahalizaliwa','Mahali alipozaliwa','t'],['uzitoz','Uzito alipozaliwa (kg)','n'],
+  ['njia','Njia ya kuzaliwa','s',['','Kawaida','Upasuaji','Sijui']],['njiti','Alizaliwa kabla ya wakati?','s',YN],
+  ['maziwa','Alinyonya maziwa ya mama pekee hadi miezi 6?','s',YN],
+  ['kutembea','Umri alipoanza kutembea (miezi)','n'],['kuongea','Umri alipoanza kuongea (miezi)','n']]},
+ {t:'Historia ya afya',f:[
+  ['mzio','Mzio au dawa anazotumia','t'],['sugu','Magonjwa sugu','t'],
+  ['urithi','Magonjwa ya urithi katika familia','t'],
+  ['afya','Historia fupi ya afya','a'],
+  ['upasuaji','Upasuaji au kulazwa hospitalini awali','a'],
+  ['chanjo','Hali ya chanjo','s',['','Amekamilisha','Bado baadhi','Hana kadi ya kliniki','Sijui']]]},
+ {t:'Ulemavu na vifaa saidizi',f:[
+  ['ulemavu','Aina ya ulemavu','t'],['kiwango','Kiwango cha ulemavu','s',['','Hakuna','Kidogo','Wastani','Kikubwa']],
+  ['chanzo','Chanzo au wakati ulipogundulika','t'],['vifaa','Vifaa saidizi anavyotumia','t']]},
+ {t:'Huduma za afya',f:[
+  ['kliniki','Hospitali au kliniki anayohudhuria','t'],['bima','Bima ya afya (jina, au "Hana")','t']]},
+ {t:'Elimu na maisha ya nyumbani',f:[
+  ['shule','Shule na darasa','t'],['wazazi','Hali ya wazazi','s',['','Wazazi wote wapo','Mzazi mmoja','Yatima']],
+  ['wanafamilia','Idadi ya watu nyumbani','n'],['milo','Milo kwa siku','n'],
+  ['maji','Chanzo cha maji','s',['','Bomba','Kisima','Chanzo kingine']],
+  ['kipato','Hali ya kipato cha familia','s',['','Chini sana','Chini','Cha kati']]]},
+ {t:'Taarifa za mzazi au mlezi',f:[
+  ['mzazi','Jina','t',0,1],['uhusiano','Uhusiano na mtoto','s',['','Mama','Baba','Bibi','Babu','Mlezi','Nyingine']],
+  ['simu','Simu','t',0,1],['kazi','Kazi ya mzazi au mlezi','t'],
+  ['anwani','Anwani','t'],['dharura','Mtu wa dharura (jina na simu)','t']]}
+];
+var PFP=[{t:'Usimamizi',f:[['pass','Nenosiri la mzazi','t',0,1]]}];
+var RF=[
+ {t:'Tukio',f:[
+  ['tarehe','Tarehe ya tukio','d',0,1],
+  ['aina','Aina ya huduma','s',['Uchunguzi wa afya','Chanjo','Uzito na urefu','Dawa','Matibabu','Lishe','Mazoezi ya viungo','Ushauri wa afya ya akili','Elimu','Ziara ya nyumbani'],1],
+  ['mahali','Mahali pa huduma','t'],['jumla','Hali ya jumla ya mtoto','s',['','Nzuri','Wastani','Mbaya','Ya dharura']]]},
+ {t:'Vipimo vya mwili',f:[
+  ['kg','Uzito (kg)','n'],['h','Urefu (cm)','n'],['kichwa','Mzunguko wa kichwa (cm)','n'],['muac','Mzunguko wa mkono, MUAC (cm)','n'],
+  ['joto','Joto la mwili (°C)','n'],['mapigo','Mapigo ya moyo (kwa dakika)','n'],['kupumua','Kupumua (kwa dakika)','n'],
+  ['presha','Presha ya damu (mf. 100/60)','t'],['spo2','Oksijeni kwenye damu, SpO2 (%)','n']]},
+ {t:'Lishe',f:[
+  ['lishe','Hali ya lishe','s',['','Kawaida','Utapiamlo wa wastani','Utapiamlo mkali']],
+  ['hamu','Hamu ya kula','s',['','Nzuri','Wastani','Hafai','Anakataa kula']],
+  ['uvimbe','Uvimbe wa miguu au uso','s',['','Hakuna','Kidogo','Mkubwa']],['milo','Milo kwa siku','n'],
+  ['virutubisho','Virutubisho au chakula maalum','t']]},
+ {t:'Dalili zilizoonekana',f:[
+  ['dalili','Chagua dalili','c',['Homa','Kikohozi','Kuharisha','Kutapika','Kupauka (upungufu wa damu)','Kuchoka sana','Kifafa','Vipele au vidonda','Maumivu','Kupumua kwa shida']]]},
+ {t:'Maendeleo ya mtoto kulingana na umri',f:[
+  ['m_mwili','Mwendo mkubwa (kukaa, kutembea)','s',LV],['m_mikono','Mwendo mdogo (kushika, kuandika)','s',LV],
+  ['m_lugha','Lugha na mawasiliano','s',LV],['m_jamii','Tabia za kijamii na kihisia','s',LV],
+  ['m_akili','Kujifunza na kufikiri','s',LV],['m_kuona','Kuona','s',LV],
+  ['m_kusikia','Kusikia','s',LV],['m_kujihudumia','Kujihudumia (kula, kuvaa, choo)','s',LV],
+  ['m_maelezo','Maelezo ya maendeleo','a']]},
+ {t:'Afya ya akili',f:[
+  ['hisia','Hali ya hisia','s',['','Furaha','Kawaida','Huzuni','Hasira','Hofu']],
+  ['usingizi','Usingizi','s',['','Mzuri','Wa wasiwasi','Hapati usingizi']],
+  ['kiwangoakili','Kiwango cha changamoto','s',['','Hakuna','Kidogo','Wastani','Kikubwa']],
+  ['tabia','Tabia zilizoonekana','t'],['ushauri','Ushauri nasaha au tiba iliyotolewa','a']]},
+ {t:'Ulemavu na tiba ya mwili',f:[
+  ['kifaa','Kifaa saidizi kilichotumika au kutolewa','t'],['mazoezi','Mazoezi yaliyofanywa','t'],
+  ['muda','Muda wa kipindi (dakika)','n'],
+  ['uwezo','Uwezo wa kujitegemea','s',['','0 - Hawezi kabisa','1','2','3','4','5 - Anajitegemea kikamilifu']]]},
+ {t:'Vipimo vya maabara',f:[
+  ['hb','Hemoglobini (g/dL)','n'],['malaria','Kipimo cha malaria','s',['','Hasi','Chanya','Hakikufanyika']],
+  ['sukari','Sukari ya damu (mmol/L)','n'],['maabara','Vipimo vingine na matokeo','a']]},
+ {t:'Uchunguzi na matibabu',f:[
+  ['utambuzi','Ugonjwa au tatizo lililogunduliwa','t'],['chanjo','Chanjo alizopewa (jina na dozi)','t'],
+  ['dawa','Dawa alizopewa (jina, kipimo, muda)','t'],['rufaa','Rufaa (hospitali aliyopelekwa)','t'],
+  ['maelezo','Maelezo ya daktari au muuguzi','a',0,1]]},
+ {t:'Hatua zinazofuata',f:[
+  ['mwelekeo','Mwelekeo wa afya','s',['','Imeimarika','Haijabadilika','Imezorota']],
+  ['daktari','Aliyemhudumia','t'],['mpango','Mpango wa matibabu','t'],['next','Kliniki ijayo','d'],
+  ['ushauriMzazi','Ushauri kwa mzazi au mlezi','a']]}
+];
+function iso(){return new Date().toISOString().slice(0,10)}
+function age(t){if(!t)return'';var b=new Date(t);if(isNaN(b))return'';var n=new Date(),m=(n.getFullYear()-b.getFullYear())*12+n.getMonth()-b.getMonth();if(n.getDate()<b.getDate())m--;if(m<0)return'';var y=Math.floor(m/12),r=m%12;return((y?y+' miaka ':'')+((r||!y)?r+' miezi':'')).trim()}
+function fld(f,v,pre){
+ var k=f[0],t=f[2]||'t',o=f[3],id=(pre||'')+k,rq=f[4]?' required':'',h='<div'+((t=='a'||t=='c')?' class="full"':'')+'>';
+ v=v==null?'':v;
+ if(t=='c'){var sel=Array.isArray(v)?v:[];h+='<b class="lb">'+f[1]+'</b><div class="chk">'+o.map(function(x){return '<label><input type="checkbox" name="'+k+'" value="'+e(x)+'"'+(sel.indexOf(x)>-1?' checked':'')+'>'+e(x)+'</label>'}).join('')+'</div>'}
+ else{h+='<label for="'+id+'">'+f[1]+'</label>';
+  if(t=='s'){var ops=o.slice();if(v!==''&&ops.indexOf(v)<0)ops.push(v);h+='<select id="'+id+'" name="'+k+'"'+rq+'>'+ops.map(function(x){return '<option value="'+e(x)+'"'+(x==v?' selected':'')+'>'+(x===''?'Chagua':e(x))+'</option>'}).join('')+'</select>'}
+  else if(t=='a')h+='<textarea id="'+id+'" name="'+k+'"'+rq+'>'+e(v)+'</textarea>';
+  else h+='<input id="'+id+'" name="'+k+'" type="'+(t=='n'?'number':(t=='d'?'date':'text'))+'"'+(t=='n'?' step="any" min="0"':'')+' value="'+e(v)+'"'+rq+'>'}
+ return h+'</div>'}
+function formHTML(G,vals,pre){return G.map(function(g){return '<fieldset><legend>'+g.t+'</legend><div class="two">'+g.f.map(function(f){return fld(f,vals?vals[f[0]]:'',pre)}).join('')+'</div></fieldset>'}).join('')}
+function rd(fm,G){var o={};G.forEach(function(g){g.f.forEach(function(f){var k=f[0];if(f[2]=='c'){o[k]=[].slice.call(fm.querySelectorAll('input[name="'+k+'"]:checked')).map(function(x){return x.value})}else{var el=fm.elements[k];o[k]=el?String(el.value).trim():''}})});return o}
+function grp(o,G,skip){var out=[];G.forEach(function(g){var it=[];g.f.forEach(function(f){var v=o[f[0]];if(Array.isArray(v))v=v.join(', ');if(v==null||String(v)===''||(skip&&skip.indexOf(f[0])>-1))return;it.push([f[1],v,f[2]||'t'])});if(it.length)out.push({t:g.t,i:it})});return out}
+
+$('regF').innerHTML=formHTML(PF,null,'g_')+'<button class="btn b" type="submit">Sajili mtoto</button>';
+$('regF').onsubmit=function(ev){ev.preventDefault();if(S.role!='admin')return;
+ var o=rd(this,PF);
+ o.no='KM-'+String(D.kids.length+1).padStart(4,'0');if(D.kids.some(function(k){return k.no==o.no}))o.no='KM-'+Date.now().toString().slice(-6);
+ o.pass=Math.random().toString(36).slice(2,8);o.siku=today();o.foto='';o.docs=[];o.rec=[];
+ if(o.uzito)o.rec.push({tarehe:iso(),aina:'Uzito na urefu',kg:o.uzito,h:o.urefu,maelezo:'Vipimo vya usajili'});
+ D.kids.push(o);sv();this.reset();renderAdmin();
+ msg('regOut','Mtoto amesajiliwa. Mpe mzazi: namba ya kuingia <b>'+e(o.no)+'</b>, nenosiri <b>'+e(o.pass)+'</b>.')};
+
+function editHTML(k){return '<details class="panel" style="max-width:none;margin:1.2rem 0"><summary class="btn b">'+ic('pencil')+'Hariri taarifa za mtoto</summary><form id="edF" class="gf" style="margin-top:1rem">'+formHTML(PF.concat(PFP),k,'e_')+'<button class="btn b" type="submit">Hifadhi mabadiliko</button></form></details>'}
+function recCard(r){
+ return '<li class="rc"><b>'+e(r.aina)+'</b> <span>'+e(r.tarehe)+'</span>'+grp(r,RF,['tarehe','aina']).map(function(g){var c='',l='';g.i.forEach(function(x){var v=e(x[1]);if(x[2]=='n'||x[2]=='s'||x[2]=='d')c+='<span class="chip">'+e(x[0])+': '+v+'</span>';else l+='<p><b>'+e(x[0])+':</b> '+v+'</p>'});return '<div class="rg"><h4>'+e(g.t)+'</h4>'+c+l+'</div>'}).join('')+'</li>'}
+function dlHTML(k,adm){var G=grp(k,PF,[]);if(k.next)G.unshift({t:'Ratiba',i:[['Kliniki ijayo',k.next,'d']]});if(adm)G.push({t:'Usimamizi',i:[['Nenosiri la mzazi',k.pass,'t']]});
+ return G.map(function(g){return '<section class="grp"><h3>'+e(g.t)+'</h3><div class="dl">'+g.i.map(function(r){return '<div><b>'+e(r[0])+'</b>'+e(r[1])+'</div>'}).join('')+'</div></section>'}).join('')}
+
+function printKid(k){
+ var a=age(k.tar),h='<div class="rh"><h1>Dhuran Supporting Organization</h1><p>Kituo cha Matumaini ya Watoto &middot; Makunduchi, Kusini Unguja &middot; Simu 0780 981 880</p></div><h2>Taarifa za afya na maendeleo ya mtoto</h2><p><b>'+e(k.jina)+'</b> &middot; Namba ya usajili: '+e(k.no)+(a?' &middot; Umri: '+e(a):'')+'<br>Tarehe ya ripoti: '+e(today())+'</p>';
+ if(k.next)h+='<p><b>Kliniki ijayo:</b> '+e(k.next)+'</p>';
+ h+=grp(k,PF,[]).map(function(g){return '<h3>'+e(g.t)+'</h3><table>'+g.i.map(function(r){return '<tr><th>'+e(r[0])+'</th><td>'+e(r[1])+'</td></tr>'}).join('')+'</table>'}).join('');
+ h+='<h3>Historia ya afya na maendeleo</h3>'+(k.rec.length?k.rec.slice().reverse().map(function(r){return '<div class="rp"><h4>'+e(r.aina)+' &ndash; '+e(r.tarehe)+'</h4>'+grp(r,RF,['tarehe','aina']).map(function(g){return '<p><b>'+e(g.t)+':</b> '+g.i.map(function(x){return e(x[0])+': '+e(x[1])}).join('; ')+'</p>'}).join('')+'</div>'}).join(''):'<p>Bado hakuna rekodi.</p>');
+ h+='<p class="sg">Ripoti hii imetolewa na Dhuran Supporting Organization, Makunduchi, Kusini Unguja, simu 0780 981 880. Ina taarifa za siri za mtoto; itumike na mzazi, mlezi na watoa huduma wa afya pekee.</p>';
+ $('pr').innerHTML=h;var t=document.title;document.title='Taarifa-'+k.no+'-'+String(k.jina).replace(/\s+/g,'_');
+ window.addEventListener('afterprint',function f(){document.title=t;window.removeEventListener('afterprint',f)});
+ window.print()}
+
+function renderKid(){
+ var adm=S.role=='admin',id=adm?S.view:S.kid,k=D.kids.filter(function(x){return x.no==id})[0];
+ if(!k){$('kid').innerHTML='<p>Mtoto hajapatikana.</p>';return}
+ var ds=D.dons.filter(function(x){return x.kid==k.no}),a=age(k.tar);
+ $('kid').innerHTML=(adm?'<p class="bk"><a href="#/admin" onclick="S.view=\'\';ss()">'+ic('arrow-left')+'<b>Rudi kwa orodha</b></a></p>':'')+
+ '<div class="kh"><div class="ph">'+(k.foto?'<img alt="Picha ya mtoto" src="'+k.foto+'">':e(k.jina.charAt(0)))+'</div><div><h2 style="margin:0">'+e(k.jina)+'</h2><p style="margin:0">Namba: '+e(k.no)+(a?'. Umri: '+e(a):'')+(k.hali?'. Anahitaji: '+e(k.hali):'')+'</p><div class="row" style="margin-top:.7rem;align-items:center"><button class="btn" id="pdf" type="button">'+ic('download')+'Pakua PDF ya taarifa</button><label class="up" style="margin:0">Badilisha picha<input id="kp" type="file" accept="image/*" hidden></label></div></div></div>'+
+ remBanner(k)+dlHTML(k,adm)+
+ (adm?editHTML(k):'')+
+ '<div class="panel t" style="max-width:none"><h3 class="hi">'+ic('plus')+'Ongeza rekodi ya afya</h3><form id="recF" class="gf">'+formHTML(RF,{tarehe:iso()},'r_')+'<button class="btn b" type="submit">Hifadhi rekodi</button></form></div>'+
+ '<h3 class="hi" style="margin-top:1.5rem">'+ic('activity')+'Historia ya afya na maendeleo</h3><ul class="tl">'+(k.rec.length?k.rec.slice().reverse().map(recCard).join(''):'<li>Bado hakuna rekodi.</li>')+'</ul>'+
+ '<div class="panel" style="max-width:none"><h3 class="hi">'+ic('image')+'Nyaraka na picha</h3><p>Pakia picha za kadi ya kliniki, majibu ya vipimo au cheti cha kuzaliwa.</p><form id="docF"><div class="two"><div><label>Jina la nyaraka</label><input name="t" required></div><div><label>Picha</label><input name="f" type="file" accept="image/*" required></div></div><button class="btn b" type="submit">Pakia</button></form><div class="docs">'+k.docs.map(function(x){return '<figure><img alt="'+e(x.t)+'" src="'+x.img+'"><figcaption>'+e(x.t)+'</figcaption></figure>'}).join('')+'</div></div>'+
+ '<h3 class="hi" style="margin-top:1.5rem">'+ic('heart')+'Msaada aliopokea</h3><ul class="tl">'+(ds.length?ds.map(function(x){return '<li><b>'+e(x.huduma)+'</b> <span>'+e(x.siku)+'</span><p>Kutoka kwa '+e(x.siri?'mchangiaji asiyetaka kutajwa':x.jina)+': TSh '+x.kiasi.toLocaleString('sw-TZ')+'</p></li>'}).join(''):'<li>Bado hajapata mchango wa moja kwa moja.</li>')+'</ul>';
+ $('pdf').onclick=function(){printKid(k)};
+ if(!adm){$('kp').parentNode.remove();$('recF').parentNode.remove();$('docF').previousElementSibling.remove();$('docF').remove();return}
+ $('edF').onsubmit=function(ev){ev.preventDefault();var o=rd(this,PF.concat(PFP));Object.keys(o).forEach(function(x){k[x]=o[x]});sv();renderKid()};
+ $('kp').onchange=function(){if(this.files[0])img(this.files[0],320,function(u){k.foto=u;sv();renderKid()})};
+ $('recF').onsubmit=function(ev){ev.preventDefault();var o=rd(this,RF);k.rec.push(o);if(o.kg)k.uzito=o.kg;if(o.h)k.urefu=o.h;if(o.next)k.next=o.next;sv();renderKid()};
+ $('docF').onsubmit=function(ev){ev.preventDefault();var f=this.elements;img(f.f.files[0],900,function(u){k.docs.push({t:f.t.value,img:u});sv();renderKid()})};
+ if(S.act=='edit'){$('edF').parentNode.open=true;$('edF').scrollIntoView()}else if(S.act=='rec'){$('recF').scrollIntoView()}S.act='';
+}
+
+function renderAdmin(){
+ var q=($('aq').value||'').toLowerCase(),tot=D.dons.reduce(function(a,x){return a+(x.kiasi||0)},0);
+ $('aSt').innerHTML=stat(D.kids.length,'Watoto','users')+stat(D.dons.length,'Michango','heart')+stat(tot.toLocaleString('sw-TZ'),'Jumla ya michango (TSh)','activity');
+ $('aTb').innerHTML=D.kids.filter(function(k){return (k.jina+k.no+k.mzazi).toLowerCase().indexOf(q)>-1}).map(function(k){return '<tr><td data-l="Namba">'+e(k.no)+'</td><td data-l="Mtoto">'+e(k.jina)+'</td><td data-l="Hali">'+e(k.hali)+'</td><td data-l="Mzazi">'+e(k.mzazi)+', '+e(k.simu)+'</td><td data-l="Nenosiri">'+e(k.pass)+'</td><td><button class="sm" data-o="'+e(k.no)+'">Fungua</button> <button class="sm" data-o="'+e(k.no)+'" data-a="rec">Ongeza</button> <button class="sm" data-o="'+e(k.no)+'" data-a="edit">Edit</button> <button class="sm" data-p="'+e(k.no)+'">'+ic('download')+'PDF</button> <button class="sm x" data-d="'+e(k.no)+'">Futa</button></td></tr>'}).join('')||'<tr><td colspan="6">Hakuna watoto.</td></tr>';
+ renderEv('aEv',true);renderRem();
+ $('aGal').innerHTML=D.gal.map(function(g,i){return '<figure><img alt="'+e(g.c)+'" src="'+g.img+'"><button class="sm x" data-g="'+i+'">Futa</button></figure>'}).join('');
+ $('aDn').innerHTML=D.dons.map(function(x){return '<tr><td data-l="Tarehe">'+e(x.siku)+'</td><td data-l="Mchangiaji">'+e(x.jina)+' ('+e(x.aina||'Mtu binafsi')+')</td><td data-l="Simu">'+e(x.simu)+'</td><td data-l="Barua pepe">'+e(x.email||'-')+'</td><td data-l="Anapoishi">'+e((x.makazi||'-')+(x.anwani?', '+x.anwani:''))+'</td><td data-l="Mtoto">'+e(x.kid||'Yeyote')+'</td><td data-l="Huduma">'+e(x.huduma)+'</td><td data-l="Malipo">'+e((x.lipa||'-')+', '+(x.mara||''))+'</td><td data-l="Kiasi (TSh)">'+x.kiasi.toLocaleString('sw-TZ')+'</td></tr>'}).join('')||'<tr><td colspan="9">Hakuna michango.</td></tr>';
+}
+$('aq').oninput=renderAdmin;
+$('aOut').onclick=function(){S={};ss();location.hash='#/';go()};
+$('evF').onsubmit=function(ev){ev.preventDefault();var f=$('evVid').files[0]||$('evImg').files[0],c=$('evC').value,self=this,v=!!f&&f.type.indexOf('video')==0,id='e'+Date.now();
+ if(!f){msg('eOut','Chagua picha au video.',1);return}
+ if(v&&f.size>20*1048576){msg('eOut','Video ni kubwa mno. Tumia isiyozidi MB 20.',1);return}
+ function done(u){mput(id,u,function(ok){if(!ok){msg('eOut','Imeshindikana kuhifadhi tukio.',1);return}D.ev.push({id:id,c:c,v:v,ts:Date.now()});sv();self.reset();$('eOut').innerHTML='';renderAdmin()})}
+ if(v){var r=new FileReader();r.onload=function(){done(r.result)};r.readAsDataURL(f)}else img(f,900,done)};
+$('aEv').onclick=function(ev){var i=ev.target.dataset.x;if(i&&confirm('Futa tukio hili?')){D.ev=D.ev.filter(function(x){return x.id!=i});mdel(i);sv();renderAdmin()}};
+$('galF').onsubmit=function(ev){ev.preventDefault();var c=$('gC').value,self=this;img($('gF').files[0],700,function(u){D.gal.push({c:c,img:u});sv();self.reset();renderAdmin()})};
+$('aGal').onclick=function(ev){var i=ev.target.dataset.g;if(i!==undefined&&confirm('Futa picha hii?')){D.gal.splice(+i,1);sv();renderAdmin()}};
+$('aTb').onclick=function(ev){var b=ev.target.closest('button');if(!b)return;
+ if(b.dataset.p){var kk=D.kids.filter(function(k){return k.no==b.dataset.p})[0];if(kk)printKid(kk);return}
+ if(b.dataset.o){S.view=b.dataset.o;S.act=b.dataset.a||'';ss();location.hash='#/akaunti';go()}
+ else if(b.dataset.d&&confirm('Futa mtoto huyu na taarifa zake zote?')){D.kids=D.kids.filter(function(k){return k.no!=b.dataset.d});sv();renderAdmin()}};
+go();
+
+/* ===== Ukumbusho wa kliniki ===== */
+function dleft(iso){var d=new Date(iso+'T00:00:00');if(isNaN(d))return null;var n=new Date();n.setHours(0,0,0,0);return Math.round((d-n)/864e5)}
+function dtxt(n){return n===0?'leo':n===1?'kesho':n>1?'baada ya siku '+n:'ilipita siku '+(-n)}
+function fdate(iso){try{var d=new Date(iso+'T00:00:00');return isNaN(d)?iso:d.toLocaleDateString('sw-TZ',{weekday:'long',day:'numeric',month:'long',year:'numeric'})}catch(x){return iso}}
+function tzp(p){p=String(p||'').replace(/[^\d+]/g,'');if(p.charAt(0)=='+')return p.slice(1);if(p.indexOf('255')==0)return p;if(p.charAt(0)=='0')return '255'+p.slice(1);if(p.length==9)return '255'+p;return p}
+function mtxt(n){return n<0?'iliyopangwa siku '+(-n)+' zilizopita':dtxt(n)}
+function rmsg(k){return (D.tpl||DTPL).replace(/\{mzazi\}/g,k.mzazi||'mzazi').replace(/\{mtoto\}/g,k.jina).replace(/\{tarehe\}/g,fdate(k.next)).replace(/\{siku\}/g,mtxt(dleft(k.next)))}
+function remBanner(k){if(!k.next)return '';var n=dleft(k.next);if(n===null||n<-30)return '';return '<div class="rm">'+ic('bell')+'<div><b>Ukumbusho wa kliniki</b>Kliniki ijayo ni '+e(fdate(k.next))+' ('+e(dtxt(n))+').</div></div>'}
+function renderRem(){
+ var t=$('tplT');if(t&&!t.dataset.i){t.value=D.tpl||DTPL;t.dataset.i='1'}
+ var L=D.kids.filter(function(k){var n=k.next?dleft(k.next):null;return n!==null&&n<=14&&n>=-14}).sort(function(a,b){return dleft(a.next)-dleft(b.next)});
+ $('aRem').innerHTML=L.map(function(k){
+  var n=dleft(k.next),cls=n<0?'r':(n<=2?'w':''),num=tzp(k.simu),enc=encodeURIComponent(rmsg(k)),sent=k.rs==k.next;
+  var act=num.length>=11?'<a class="sm" data-k="'+e(k.no)+'" href="sms:+'+num+'?&body='+enc+'">'+ic('sms')+'SMS</a> <a class="sm" data-k="'+e(k.no)+'" target="_blank" rel="noopener noreferrer" href="https://wa.me/'+num+'?text='+enc+'">'+ic('chat')+'WhatsApp</a> <a class="sm" href="tel:+'+num+'">'+ic('phone')+'Piga</a>':'<span class="bd r">Namba ya simu haijakamilika</span>';
+  return '<tr><td data-l="Mtoto">'+e(k.jina)+'</td><td data-l="Mzazi">'+e(k.mzazi)+', '+e(k.simu)+'</td><td data-l="Kliniki">'+e(fdate(k.next))+'</td><td data-l="Hali"><span class="bd '+cls+'">'+e(dtxt(n))+'</span>'+(sent?' <span class="bd ok">Ujumbe umefunguliwa</span>':'')+'</td><td>'+act+'</td></tr>'}).join('')||'<tr><td colspan="5">Hakuna kliniki ndani ya siku 14 zijazo.</td></tr>'}
+$('aRem').onclick=function(ev){var a=ev.target.closest('a[data-k]');if(!a)return;var k=D.kids.filter(function(x){return x.no==a.dataset.k})[0];if(k){k.rs=k.next;sv();setTimeout(renderRem,500)}};
+$('tplS').onclick=function(){var v=$('tplT').value.trim();D.tpl=v||'';sv();renderRem();msg('tplOut','Ujumbe umehifadhiwa.')};
+$('tplR').onclick=function(){$('tplT').value=DTPL;D.tpl='';sv();renderRem();msg('tplOut','Ujumbe wa kawaida umerudishwa.')};
+
+/* ===== Malipo kwa kadi ya benki ===== */
+function renderBank(){
+ var b=BANK,rows=[['Benki',b.benki],['Jina la akaunti',b.jina],['Namba ya akaunti',b.akaunti,1],['Tawi',b.tawi],['SWIFT code',b.swift],['Sarafu',b.sarafu]].filter(function(r){return r[1]});
+ var ok=/^https:\/\//i.test(b.link||''),h='<h2 class="hi" style="margin-top:0">'+ic('card')+'Changia kwa kadi ya benki</h2>';
+ var has=rows.some(function(r){return r[0]!='Sarafu'});if(!has&&!ok){h+='<p>Taarifa za malipo ya kadi ya benki zitawekwa hapa hivi karibuni. Kwa sasa tuma fomu iliyo juu, au piga <a href="tel:+255780981880"><b>0780 981 880</b></a> tukuelekeze.</p>'}
+ else{
+  h+='<p>Chagua njia unayopendelea. Website hii haiombi wala haihifadhi namba ya kadi yako.</p>';
+  if(ok)h+='<p><a class="btn b" href="'+e(b.link)+'" target="_blank" rel="noopener noreferrer">'+ic('card')+'Lipa kwa kadi ya benki'+ic('ext')+'</a></p>';
+  if(has)h+='<h3>'+(ok?'Au tuma':'Tuma')+' kupitia benki</h3><div class="dl">'+rows.map(function(r){return '<div><b>'+e(r[0])+'</b>'+e(r[1])+(r[2]?'<button class="sm" type="button" data-cp="'+e(r[1])+'" style="margin-top:.5rem">'+ic('copy')+'Nakili</button>':'')+'</div>'}).join('')+'</div>';
+  h+='<p style="margin-top:1rem">Kwenye maelezo ya malipo andika jina lako na namba ya mtoto (mfano KM-0001) unayemsaidia. Kisha tuma fomu iliyo juu ili tuthibitishe mchango wako.</p>'}
+ if(b.maelezo)h+='<p>'+e(b.maelezo)+'</p>';
+ $('bankBox').innerHTML=h}
+$('bankBox').onclick=function(ev){var c=ev.target.closest('[data-cp]');if(!c)return;var v=c.dataset.cp,done=function(){var o=c.innerHTML;c.innerHTML=ic('shield')+'Imenakiliwa';setTimeout(function(){c.innerHTML=o},1500)};
+ try{navigator.clipboard.writeText(v).then(done,function(){prompt('Nakili namba hii:',v)})}catch(x){prompt('Nakili namba hii:',v)}};
+renderBank();
+</script>
+</body>
+</html>
