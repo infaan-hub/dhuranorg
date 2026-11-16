@@ -98,8 +98,11 @@ export default function EditorPage() {
             r.readAsDataURL(f)
           }} style={inputStyle} />
           {heroBackground && (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img src={heroBackground} alt="Hero background preview" style={{ width: '100%', height: '120px', objectFit: 'cover', borderRadius: '9px', border: '1px solid var(--line)' }} />
+            <>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={heroBackground} alt="Hero background preview" style={{ width: '100%', height: '120px', objectFit: 'cover', borderRadius: '9px', border: '1px solid var(--line)' }} />
+              <button type="button" onClick={() => setHeroBackground('')} style={{ padding: '6px 10px', borderRadius: '9px', border: '1px solid var(--line)', background: 'transparent', color: 'var(--ink)', cursor: 'pointer', justifySelf: 'start' }}>Remove background</button>
+            </>
           )}
         </section>
 
