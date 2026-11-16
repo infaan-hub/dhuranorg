@@ -32,16 +32,6 @@
   --font-heading: var(--font-fraunces), 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
   --font-body: var(--font-inter), Inter, Arial, sans-serif;
 }
-.dark {
-  --paper: #0e1a17;
-  --surface: #16241f;
-  --ink: #e8efe9;
-  --muted-ink: #a8b5ae;
-  --line: #2a3a34;
-  --forest: #4aa3b5;
-  --clay: #4aa3b5;
-  --dark: #0a120f;
-}
 
 @layer base {
   * { @apply border-border; }

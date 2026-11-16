@@ -1,8 +1,8 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
-import { ArrowUpRight, Globe, Heart, Menu, Moon, Sun, X } from 'lucide-react'
+import { ArrowUpRight, Globe, Heart, Menu, X } from 'lucide-react'
 import { useLang } from '@/lib/i18n'
 
 const navItems = [
@@ -19,20 +19,7 @@ const navItems = [
 
 export function Header() {
   const [open, setOpen] = useState(false)
-  const [dark, setDark] = useState(false)
   const { lang, setLang, t } = useLang()
-  useEffect(() => {
-    const saved = localStorage.getItem('theme')
-    const isDark = saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)
-    setDark(isDark)
-    document.documentElement.classList.toggle('dark', isDark)
-  }, [])
-  function toggleTheme() {
-    const next = !dark
-    setDark(next)
-    document.documentElement.classList.toggle('dark', next)
-    localStorage.setItem('theme', next ? 'dark' : 'light')
-  }
 
   return (
     <>
@@ -62,9 +49,6 @@ export function Header() {
           <span className="brand-copy"><strong>het dhuran</strong><small>Special Needs Centre</small></span>
         </a>
         <div className="sidebar-settings">
-          <button className="sidebar-setting-btn" type="button" onClick={toggleTheme}>
-            {dark ? <Sun size={16} /> : <Moon size={16} />} {dark ? 'Light' : 'Dark'}
-          </button>
           <button className="sidebar-setting-btn" type="button" onClick={() => setLang(lang === 'en' ? 'sw' : 'en')}>
             <Globe size={16} /> {lang.toUpperCase()}
           </button>
