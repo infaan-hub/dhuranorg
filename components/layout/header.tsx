@@ -37,7 +37,6 @@ export function Header() {
           </button>
 
           <a href="#top" className="brand brand-right" aria-label="Het Dhuran Special Needs Centre home" onClick={() => setOpen(false)}>
-            <span className="brand-icon"><Heart size={19} strokeWidth={2.3} /></span>
             <span className="brand-copy"><strong>het dhuran</strong><small>Special Needs Centre</small></span>
           </a>
         </div>
