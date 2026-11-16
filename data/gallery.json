@@ -1,0 +1,8 @@
+[
+  { "id": "1", "label": "Community volunteers", "category": "Community", "image": "" },
+  { "id": "2", "label": "Learning activities", "category": "Learning", "image": "" },
+  { "id": "3", "label": "Therapy sessions", "category": "Therapy", "image": "" },
+  { "id": "4", "label": "Nutrition support", "category": "Health", "image": "" },
+  { "id": "5", "label": "Visitors & partners", "category": "Community", "image": "" },
+  { "id": "6", "label": "Centre life", "category": "General", "image": "" }
+]

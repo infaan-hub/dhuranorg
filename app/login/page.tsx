@@ -1,164 +1,76 @@
 'use client'
 
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
-import Link from 'next/link'
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/input'
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs'
-import { Lock, User, Shield, Login } from 'lucide-react'
-import {
-  loadData,
-  saveData,
-  createParentSession,
-  createAdminSession,
-  DEFAULT_ADMIN_PASSWORD,
-} from '@/lib/storage'
-import { formatTsh } from '@/lib/utils'
-import type { Child } from '@/types'
+import { Suspense, useState } from 'react'
+import { useRouter, useSearchParams } from 'next/navigation'
 
-export default function LoginPage() {
+function LoginForm() {
   const router = useRouter()
-  const [tab, setTab] = useState<'parent' | 'admin'>('parent')
-  const [error, setError] = useState<string>('')
+  const params = useSearchParams()
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
-  const handleParentLogin = async (e: React.FormEvent) => {
+  async function submit(e: React.FormEvent) {
     e.preventDefault()
     setLoading(true)
     setError('')
-    const formData = new FormData(e.currentTarget as HTMLFormElement)
-    const regNo = (formData.get('regNo') as string).trim().toUpperCase()
-    const password = formData.get('password') as string
-
-    try {
-      const data = loadData()
-      const kid = data.kids.find(
-        (k) => k.no === regNo && k.pass === password
-      )
-      if (!kid) {
-        setError('Namba ya usajili au nenosiri si sahihi.')
-        setLoading(false)
-        return
-      }
-      createParentSession(kid.no)
-      router.push(`/akaunti/${kid.no}`)
-      router.refresh()
-    } catch {
-      setError('Tumilizo limejitikiza. Jaribu tena.')
-      setLoading(false)
-    }
-  }
-
-  const handleAdminLogin = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setLoading(true)
-    setError('')
-    const formData = new FormData(e.currentTarget as HTMLFormElement)
-    const password = formData.get('adminPassword') as string
-
-    if (password !== DEFAULT_ADMIN_PASSWORD) {
-      setError('Nenosiri si sahihi.')
-      setLoading(false)
+    const res = await fetch('/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username, password }),
+    })
+    setLoading(false)
+    if (!res.ok) {
+      const data = await res.json().catch(() => ({}))
+      setError(data.error || 'Login failed')
       return
     }
-
-    createAdminSession()
-    router.push('/admin')
+    const next = params.get('next') || '/admin/dashboard'
+    router.push(next)
     router.refresh()
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background p-4">
-      <Card className="w-full max-w-md">
-        <CardHeader className="space-y-1">
-          <CardTitle className="text-2xl font-bold tracking-tight">
-            Inga
-          </CardTitle>
-          <CardDescription>
-            Namba ya usajili na nenosiri hutolewa na kituo baada ya
-            mtoto kusajiliwa.
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <Tabs
-            value={tab}
-            onValueChange={(v) => setTab(v as 'parent' | 'admin')}
-            className="w-full"
-          >
-            <TabsList className="grid w-full grid-cols-2">
-              <TabsTrigger value="parent">
-                <User className="w-4 h-4 mr-2" />
-              </TabsTrigger>
-              <TabsTrigger value="admin">
-                <Shield className="w-4 h-4 mr-2" />
-              </TabsTrigger>
-            </TabsList>
-
-            <TabsContent value="parent" className="space-y-4">
-              <form onSubmit={handleParentLogin} className="space-y-4">
-                <div className="space-y-2">
-                  <Label htmlFor="regNo">Namba ya usajili wa mtoto</Label>
-                  <Input
-                    id="regNo"
-                    placeholder="KM-0001"
-                    required
-                    className="w-full"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="password">Nenosiri</Label>
-                  <Input
-                    id="password"
-                    type="password"
-                    required
-                    className="w-full"
-                  />
-                </div>
-                <Button type="submit" className="w-full" disabled={loading}>
-                  {loading ? 'Inaingia...' : <Login className="w-4 h-4 mr-2" />}
-                </Button>
-                <p className="text-xs text-muted-foreground">
-                  Namba na nenosiri hutolewa na kituo baada ya mtoto kusajiliwa.
-                </p>
-              </form>
-            </TabsContent>
-
-            <TabsContent value="admin" className="space-y-4">
-              <form onSubmit={handleAdminLogin} className="space-y-4">
-                <div className="space-y-2">
-                  <Label htmlFor="adminPassword">Nenosiri</Label>
-                  <Input
-                    id="adminPassword"
-                    type="password"
-                    required
-                    className="w-full"
-                  />
-                </div>
-                <Button type="submit" className="w-full" disabled={loading}>
-                  {loading ? 'Inaingia...' : <Login className="w-4 h-4 mr-2" />}
-                </Button>
-              </form>
-            </TabsContent>
-          </Tabs>
-        </CardContent>
-        {error && (
-          <CardFooter className="bg-red-50 border-red-100 p-3 rounded-lg">
-            <p className="text-sm text-red-800 flex items-center gap-2">
-              <Lock className="w-4 h-4" /> {error}
-            </p>
-          </CardFooter>
-        )}
-      </Card>
+    <div className="site-shell">
+      <section className="work-section container" style={{ maxWidth: '480px' }}>
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Admin</p>
+            <h2>Login</h2>
+          </div>
+        </div>
+        <form onSubmit={submit} style={{ display: 'grid', gap: '14px' }}>
+          <input
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Username"
+            style={{ padding: '12px 14px', border: '1px solid var(--line)', borderRadius: '9px', background: 'var(--surface)', color: 'var(--ink)' }}
+          />
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Password"
+            style={{ padding: '12px 14px', border: '1px solid var(--line)', borderRadius: '9px', background: 'var(--surface)', color: 'var(--ink)' }}
+          />
+          {error && <p style={{ color: 'var(--destructive, #c0392b)', margin: 0 }}>{error}</p>}
+          <button type="submit" className="button button-accent" disabled={loading}>
+            {loading ? 'Signing in…' : 'Sign in'}
+          </button>
+        </form>
+        <p style={{ marginTop: '16px', fontSize: '14px', color: 'var(--muted-ink)' }}>
+          No account? <a href="/register" style={{ color: 'var(--clay)' }}>Register</a>
+        </p>
+      </section>
     </div>
+  )
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={<div className="site-shell"><section className="work-section container"><p>Loading…</p></section></div>}>
+      <LoginForm />
+    </Suspense>
   )
 }
