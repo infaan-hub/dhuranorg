@@ -61,7 +61,7 @@ export function Header() {
             </Link>
           ))}
           <a className="nav-donate sidebar-cta" href="https://zan-medibook.vercel.app/" onClick={() => setOpen(false)} target="_blank" rel="noopener noreferrer">
-            Contact us <ArrowUpRight size={15} />
+            Connect with us <ArrowUpRight size={15} />
           </a>
         </nav>
       </aside>
