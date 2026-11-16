@@ -207,7 +207,7 @@ html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; }
   transition: background-color .18s, color .18s;
 }
 .sidebar-nav a:hover { background: var(--line); color: var(--clay); }
-.sidebar-cta { margin-top: 10px; color: white; background: var(--forest); justify-content: center; }
+.sidebar-cta { margin-top: 10px; min-height: 52px; padding: 0 20px; font-size: 16px; color: white; background: var(--forest); justify-content: center; }
 .sidebar-cta:hover { color: white; background: #0f4a52; }
 
 .cta-band { color: var(--paper); background: var(--dark); }
