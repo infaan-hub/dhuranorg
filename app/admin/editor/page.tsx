@@ -90,6 +90,17 @@ export default function EditorPage() {
           <input value={heroTitle} onChange={(e) => setHeroTitle(e.target.value)} placeholder="Title" style={inputStyle} />
           <textarea value={heroDescription} onChange={(e) => setHeroDescription(e.target.value)} placeholder="Description" rows={3} style={inputStyle} />
           <input value={heroBackground} onChange={(e) => setHeroBackground(e.target.value)} placeholder="Background image URL (optional)" style={inputStyle} />
+          <input type="file" accept="image/*" onChange={(e) => {
+            const f = e.target.files?.[0]
+            if (!f) return
+            const r = new FileReader()
+            r.onload = () => setHeroBackground(String(r.result))
+            r.readAsDataURL(f)
+          }} style={inputStyle} />
+          {heroBackground && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={heroBackground} alt="Hero background preview" style={{ width: '100%', height: '120px', objectFit: 'cover', borderRadius: '9px', border: '1px solid var(--line)' }} />
+          )}
         </section>
 
         <ArrayEditor title="Our work (services)" items={services} setItems={setServices} updateItem={updateItem} addItem={addItem} removeItem={removeItem} />
