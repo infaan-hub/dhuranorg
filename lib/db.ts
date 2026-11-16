@@ -134,6 +134,17 @@ export function ensureSchema(): Promise<void> {
         await sql`INSERT INTO gallery_items (label, category) VALUES (${s.label}, ${s.category})`
       }
     }
+    // seed events if empty
+    const ecount = await sql`SELECT count(*)::int AS c FROM events`
+    if (ecount[0].c === 0) {
+      const seeds = [
+        { title: 'Community activity day', date: '2026-12-05', description: 'Families, caregivers and volunteers come together for learning and play.' },
+        { title: 'Health and nutrition week', date: '2026-12-12', description: 'Routine check-ups and nutrition support for the children.' },
+      ]
+      for (const s of seeds) {
+        await sql`INSERT INTO events (title, date, description) VALUES (${s.title}, ${s.date}, ${s.description})`
+      }
+    }
     // seed news if empty
     const ncount = await sql`SELECT count(*)::int AS c FROM news_items`
     if (ncount[0].c === 0) {
