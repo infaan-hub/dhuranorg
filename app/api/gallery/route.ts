@@ -1,8 +1,13 @@
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 import { NextResponse } from 'next/server'
+import { unstable_noStore as noStore } from 'next/cache'
 import { ensureSchema, sql } from '@/lib/db'
 import { parseCookies, verifySession } from '@/lib/auth'
 
 export async function GET() {
+  noStore()
   await ensureSchema()
   const rows = await sql`SELECT id, label, category, image_url AS image FROM gallery_items ORDER BY created_at ASC`
   return NextResponse.json(rows)

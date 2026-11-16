@@ -1,5 +1,6 @@
 export const dynamic = 'force-dynamic'
 
+import { unstable_noStore as noStore } from 'next/cache'
 import { ensureSchema, sql } from '@/lib/db'
 import { ImageIcon } from 'lucide-react'
 
@@ -9,6 +10,7 @@ export const metadata = {
 }
 
 export default async function GalleryPage() {
+  noStore()
   await ensureSchema()
   const items = await sql`SELECT id, label, category, image_url AS image FROM gallery_items ORDER BY created_at ASC`
   const categories = Array.from(new Set(items.map((i: any) => i.category).filter(Boolean)))

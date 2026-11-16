@@ -1,6 +1,8 @@
+import { unstable_noStore as noStore } from 'next/cache'
 import { ensureSchema, sql } from '@/lib/db'
 
 export default async function DashboardPage() {
+  noStore()
   await ensureSchema()
   const totalRows = await sql`SELECT total_visits FROM site_stats WHERE id = 1`
   const viewRows = await sql`SELECT path, count FROM page_views`

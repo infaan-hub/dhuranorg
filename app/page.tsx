@@ -1,5 +1,6 @@
 export const dynamic = 'force-dynamic'
 
+import { unstable_noStore as noStore } from 'next/cache'
 import { ensureSchema, sql } from '@/lib/db'
 import { Accessibility, Activity, Apple, ArrowUpRight, BookOpen, CalendarCheck, HeartHandshake, Stethoscope } from 'lucide-react'
 
@@ -16,6 +17,7 @@ const iconMap: Record<string, any> = {
 type Item = { icon?: string; title: string; text: string; href?: string; cta?: string }
 
 export default async function Page() {
+  noStore()
   await ensureSchema()
   const rows = await sql`SELECT data FROM home_content WHERE id = 1`
   const home = (rows[0]?.data ?? {}) as any

@@ -1,8 +1,13 @@
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 import { NextResponse } from 'next/server'
+import { unstable_noStore as noStore } from 'next/cache'
 import { ensureSchema, sql } from '@/lib/db'
 import { parseCookies, verifySession } from '@/lib/auth'
 
 export async function GET(req: Request) {
+  noStore()
   const cookies = parseCookies(req.headers.get('cookie'))
   const session = verifySession(cookies['session'])
   if (!session || session.role !== 'admin') return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })

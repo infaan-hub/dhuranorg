@@ -1,5 +1,6 @@
 export const dynamic = 'force-dynamic'
 
+import { unstable_noStore as noStore } from 'next/cache'
 import { ensureSchema, sql } from '@/lib/db'
 import { CalendarCheck } from 'lucide-react'
 
@@ -9,6 +10,7 @@ export const metadata = {
 }
 
 export default async function NewsPage() {
+  noStore()
   await ensureSchema()
   const posts = await sql`SELECT id, title, published_date AS date, body AS text FROM news_items ORDER BY created_at DESC`
 
