@@ -107,10 +107,10 @@ export function ensureSchema(): Promise<void> {
           { icon: 'CalendarCheck', title: 'Clinic follow-ups', text: 'Scheduled reviews and reminders so no child misses important care.' },
         ],
         careItems: [
-          { icon: 'Stethoscope', title: 'Assessment', text: 'Initial assessment and personalised care planning for each child.', href: 'mailto:info@hetdhuran.org?subject=Visit%20request', cta: 'Book a visit' },
+          { icon: 'Stethoscope', title: 'Assessment', text: 'Initial assessment and personalised care planning for each child.', href: 'https://zan-medibook.vercel.app/', cta: 'Book a visit' },
           { icon: 'Accessibility', title: 'Therapy', text: 'Physiotherapy and movement programmes that build mobility and independence.', href: '#health', cta: 'Learn more' },
           { icon: 'Apple', title: 'Nutrition', text: 'Nutritional assessment and support to help every child grow strong and healthy.', href: '#health', cta: 'Learn more' },
-          { icon: 'CalendarCheck', title: 'Follow-ups', text: 'Scheduled reviews and reminders so no child misses important care.', href: 'mailto:info@hetdhuran.org?subject=Contact', cta: 'Contact us' },
+          { icon: 'CalendarCheck', title: 'Follow-ups', text: 'Scheduled reviews and reminders so no child misses important care.', href: 'https://zan-medibook.vercel.app/', cta: 'Contact us' },
         ],
       }
       await sql`INSERT INTO home_content (id, data) VALUES (1, ${JSON.stringify(defaultData)}::jsonb)`

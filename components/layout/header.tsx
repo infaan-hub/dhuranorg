@@ -14,7 +14,7 @@ const navItems = [
   { href: '/events', key: 'events' },
   { href: '/faq', key: 'faq' },
   { href: '/search', key: 'search' },
-  { href: 'mailto:info@hetdhuran.org', key: 'contact' },
+  { href: 'https://zan-medibook.vercel.app/', key: 'contact' },
 ]
 
 export function Header() {
@@ -76,7 +76,7 @@ export function Header() {
               {href.startsWith('mailto') ? <ArrowUpRight size={15} /> : null}
             </Link>
           ))}
-          <a className="nav-donate sidebar-cta" href="mailto:info@hetdhuran.org" onClick={() => setOpen(false)}>
+          <a className="nav-donate sidebar-cta" href="https://zan-medibook.vercel.app/" onClick={() => setOpen(false)} target="_blank" rel="noopener noreferrer">
             Contact us <ArrowUpRight size={15} />
           </a>
         </nav>

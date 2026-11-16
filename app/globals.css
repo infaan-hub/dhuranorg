@@ -95,11 +95,11 @@ html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; }
   gap: 9px;
   border: 1px solid transparent;
   border-radius: 9px;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
   transition: color .18s, background-color .18s, border-color .18s;
 }
-.nav-donate { min-height: 43px; padding: 0 16px; color: white; background: var(--forest); }
+.nav-donate { min-height: 48px; padding: 0 20px; color: white; background: var(--forest); }
 .nav-donate:hover { background: #0f4a52; }
 .menu-toggle { display: grid; place-items: center; width: 42px; height: 42px; padding: 0; border: 1px solid var(--line); border-radius: 9px; background: transparent; color: var(--ink); cursor: pointer; }
 .theme-toggle { display: grid; place-items: center; width: 42px; height: 42px; padding: 0; border: 1px solid var(--line); border-radius: 9px; background: transparent; color: var(--ink); cursor: pointer; }
@@ -152,7 +152,7 @@ html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; }
 }
 .hero-description { max-width: 560px; margin: 24px 0 0; color: rgba(243, 238, 232, .9); font-size: 18px; line-height: 1.65; }
 .hero-actions { display: flex; align-items: center; gap: 22px; margin-top: 30px; }
-.button-accent { min-height: 50px; padding: 0 19px; color: #fff; background: var(--clay); }
+.button-accent { min-height: 52px; padding: 0 22px; color: #fff; background: var(--clay); }
 .button-accent:hover { background: #0f4a52; }
 .text-link { color: var(--forest); font-size: 14px; font-weight: 600; transition: color .18s; }
 .hero .text-link { color: var(--paper); }
@@ -226,7 +226,7 @@ html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; }
 .cta-inner .eyebrow { color: #F3EEE8; }
 .cta-inner h2 { color: var(--paper); }
 .cta-description { margin: 14px 0 0; color: #d1d6cf; font-size: 16px; }
-.button-light { min-height: 52px; flex: 0 0 auto; padding: 0 19px; color: var(--dark); background: var(--paper); }
+.button-light { min-height: 56px; flex: 0 0 auto; padding: 0 22px; color: var(--dark); background: var(--paper); }
 .button-light:hover { color: var(--dark); background: #e9e1d4; }
 
 .site-footer { padding: 43px 0 0; color: #e7e9e3; background: var(--dark); border-top: 1px solid rgba(247,243,235,.16); }

@@ -44,7 +44,7 @@ export default async function Page() {
               <p className="hero-description">{heroDescription}</p>
               <div className="hero-actions">
                 <a href="#our-work" className="button button-accent">Our services <ArrowUpRight size={17} /></a>
-                <a href="mailto:info@hetdhuran.org" className="text-link">Contact us</a>
+                <a href="https://zan-medibook.vercel.app/" className="text-link" target="_blank" rel="noopener noreferrer">Contact us</a>
               </div>
             </div>
           </div>
