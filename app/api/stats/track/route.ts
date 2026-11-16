@@ -7,6 +7,6 @@ export async function POST(req: Request) {
   const { path } = await req.json().catch(() => ({ path: '/' }))
   stats.pageViews = stats.pageViews || {}
   stats.pageViews[path] = (stats.pageViews[path] || 0) + 1
-  writeJson('stats.json', stats)
+  try { writeJson('stats.json', stats) } catch { /* read-only fs on serverless */ }
   return NextResponse.json({ ok: true })
 }
