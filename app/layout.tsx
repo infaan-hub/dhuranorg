@@ -12,6 +12,31 @@ export const metadata: Metadata = {
   title: 'Het Dhuran Special Needs Centre | Health care in community',
   description:
     'Het Dhuran Special Needs Centre provides health care, therapy, learning and nutrition support for children and young adults in Jambiani, Zanzibar.',
+  metadataBase: new URL('https://dhuranorg.vercel.app'),
+  openGraph: {
+    title: 'Het Dhuran Special Needs Centre | Health care in community',
+    description:
+      'Het Dhuran Special Needs Centre provides health care, therapy, learning and nutrition support for children and young adults in Jambiani, Zanzibar.',
+    url: 'https://dhuranorg.vercel.app',
+    siteName: 'Het Dhuran Special Needs Centre',
+    images: [
+      {
+        url: '/hero-donor-poster.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Het Dhuran Special Needs Centre',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Het Dhuran Special Needs Centre | Health care in community',
+    description:
+      'Het Dhuran Special Needs Centre provides health care, therapy, learning and nutrition support for children and young adults in Jambiani, Zanzibar.',
+    images: ['/hero-donor-poster.jpg'],
+  },
 }
 
 export default function RootLayout({
