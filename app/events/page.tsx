@@ -6,7 +6,7 @@ export const dynamic = 'force-dynamic'
 export const revalidate = 0
 
 export const metadata = {
-  title: 'Events | Het Dhuran Special Needs Centre',
+  title: 'Events | Dhuran Special Needs Centre',
   description: 'Upcoming activities and events.',
 }
 

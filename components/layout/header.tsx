@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { ArrowUpRight, Globe, Heart, Menu, X } from 'lucide-react'
+import { ArrowUpRight, Globe, Menu, X } from 'lucide-react'
 import { useLang } from '@/lib/i18n'
 
 const navItems = [
@@ -36,8 +36,8 @@ export function Header() {
             {open ? <X size={21} /> : <Menu size={21} />}
           </button>
 
-          <a href="#top" className="brand brand-right" aria-label="Het Dhuran Special Needs Centre home" onClick={() => setOpen(false)}>
-            <span className="brand-copy"><strong>het dhuran</strong><small>Special Needs Centre</small></span>
+          <a href="#top" className="brand brand-right" aria-label="Dhuran Special Needs Centre home" onClick={() => setOpen(false)}>
+            <span className="brand-copy"><strong>dhuran</strong><small>Special Needs Centre</small></span>
           </a>
         </div>
       </header>
@@ -45,8 +45,7 @@ export function Header() {
       <div className={`sidebar-overlay${open ? ' sidebar-overlay-open' : ''}`} onClick={() => setOpen(false)} aria-hidden="true" />
       <aside className={`sidebar${open ? ' sidebar-open' : ''}`} aria-label="Main navigation">
         <a href="#top" className="brand sidebar-brand" onClick={() => setOpen(false)}>
-          <span className="brand-icon"><Heart size={19} strokeWidth={2.3} /></span>
-          <span className="brand-copy"><strong>het dhuran</strong><small>Special Needs Centre</small></span>
+          <span className="brand-copy"><strong>dhuran</strong><small>Special Needs Centre</small></span>
         </a>
         <div className="sidebar-settings">
           <button className="sidebar-setting-btn" type="button" onClick={() => setLang(lang === 'en' ? 'sw' : 'en')}>
@@ -60,9 +59,6 @@ export function Header() {
               {href.startsWith('mailto') ? <ArrowUpRight size={15} /> : null}
             </Link>
           ))}
-          <a className="nav-donate sidebar-cta" href="https://zan-medibook.vercel.app/" onClick={() => setOpen(false)} target="_blank" rel="noopener noreferrer">
-            Connect with us <ArrowUpRight size={15} />
-          </a>
         </nav>
       </aside>
     </>

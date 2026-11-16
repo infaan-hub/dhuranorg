@@ -7,7 +7,7 @@ import { Breadcrumbs } from '@/components/breadcrumbs'
 import { ShareButtons } from '@/components/share-buttons'
 
 export const metadata = {
-  title: 'News & Blog | Het Dhuran Special Needs Centre',
+  title: 'News & Blog | Dhuran Special Needs Centre',
   description: 'Updates, events and community activities.',
 }
 

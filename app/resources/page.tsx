@@ -2,7 +2,7 @@ import { BookOpen, HelpCircle, Stethoscope } from 'lucide-react'
 import { Breadcrumbs } from '@/components/breadcrumbs'
 
 export const metadata = {
-  title: 'Resources for families | Het Dhuran Special Needs Centre',
+  title: 'Resources for families | Dhuran Special Needs Centre',
   description: 'Care guides, clinic info and FAQs.',
 }
 

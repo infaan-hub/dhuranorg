@@ -1,7 +1,7 @@
 import { Breadcrumbs } from '@/components/breadcrumbs'
 
 export const metadata = {
-  title: 'FAQ | Het Dhuran Special Needs Centre',
+  title: 'FAQ | Dhuran Special Needs Centre',
   description: 'Frequently asked questions.',
 }
 

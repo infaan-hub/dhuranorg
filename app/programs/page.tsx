@@ -2,7 +2,7 @@ import { Accessibility, Apple, BookOpen, CalendarCheck, Stethoscope } from 'luci
 import { Breadcrumbs } from '@/components/breadcrumbs'
 
 export const metadata = {
-  title: 'Programmes | Het Dhuran Special Needs Centre',
+  title: 'Programmes | Dhuran Special Needs Centre',
   description: 'Individual learning, movement & therapy, health & nourishment.',
 }
 

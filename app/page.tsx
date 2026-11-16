@@ -23,7 +23,7 @@ export default async function Page() {
   const home = (rows[0]?.data ?? {}) as any
   const heroEyebrow = home.heroEyebrow ?? 'Health care, therapy and support in Jambiani'
   const heroTitle = home.heroTitle ?? 'Care for every one , every day.'
-  const heroDescription = home.heroDescription ?? 'Het Dhuran Special Needs Centre provides health care, therapy, learning and nutrition support for children and young adults in Jambiani, Zanzibar.'
+  const heroDescription = home.heroDescription ?? 'Dhuran Special Needs Centre provides health care, therapy, learning and nutrition support for children and young adults in Jambiani, Zanzibar.'
   const heroBackground = home.heroBackground ?? ''
   const services: Item[] = home.services ?? []
   const healthItems: Item[] = home.healthItems ?? []
@@ -119,7 +119,7 @@ export default async function Page() {
             <p className="eyebrow">Latest news</p>
             <h2 id="news-title">Updates from the centre.</h2>
           </div>
-          <p className="section-intro">Recent articles and stories from Het Dhuran.</p>
+          <p className="section-intro">Recent articles and stories from Dhuran.</p>
         </div>
         <div className="services-grid">
           {latestNews.length === 0 && <p style={{ color: 'var(--muted-ink)' }}>No news yet.</p>}

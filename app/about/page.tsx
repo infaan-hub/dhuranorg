@@ -2,7 +2,7 @@ import { HeartHandshake, MapPin, Sparkles } from 'lucide-react'
 import { Breadcrumbs } from '@/components/breadcrumbs'
 
 export const metadata = {
-  title: 'About | Het Dhuran Special Needs Centre',
+  title: 'About | Dhuran Special Needs Centre',
   description: 'Our story, mission and community in Jambiani, Zanzibar.',
 }
 
@@ -17,7 +17,7 @@ export default function AboutPage() {
             <h2 id="about-title">A health centre for children with disabilities.</h2>
           </div>
           <p className="section-intro">
-            Het Dhuran Special Needs Centre brings families, caregivers and local professionals together in Jambiani, Zanzibar.
+            Dhuran Special Needs Centre brings families, caregivers and local professionals together in Jambiani, Zanzibar.
           </p>
         </div>
 

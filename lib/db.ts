@@ -93,7 +93,7 @@ export function ensureSchema(): Promise<void> {
       const defaultData = {
         heroEyebrow: 'Health care, therapy and support in Jambiani',
         heroTitle: 'Care for every one , every day.',
-        heroDescription: 'Het Dhuran Special Needs Centre provides health care, therapy, learning and nutrition support for children and young adults in Jambiani, Zanzibar.',
+        heroDescription: 'Dhuran Special Needs Centre provides health care, therapy, learning and nutrition support for children and young adults in Jambiani, Zanzibar.',
         heroBackground: '',
         services: [
           { icon: 'BookOpen', title: 'Individual learning', text: 'Special education and sensory activities shaped around each child’s pace, interests and needs.' },

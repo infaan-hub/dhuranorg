@@ -6,7 +6,7 @@ import { ImageIcon } from 'lucide-react'
 import { Breadcrumbs } from '@/components/breadcrumbs'
 
 export const metadata = {
-  title: 'Gallery | Het Dhuran Special Needs Centre',
+  title: 'Gallery | Dhuran Special Needs Centre',
   description: 'Photos and videos from the centre.',
 }
 
@@ -26,7 +26,7 @@ export default async function GalleryPage() {
             <h2 id="gallery-title">Photos and videos from the centre.</h2>
           </div>
           <p className="section-intro">
-            A glimpse into daily life, learning and community at Het Dhuran.
+            A glimpse into daily life, learning and community at Dhuran.
           </p>
         </div>
 
