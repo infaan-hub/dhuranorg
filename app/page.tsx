@@ -1,4 +1,6 @@
-import { readJson } from '@/lib/storage'
+export const dynamic = 'force-dynamic'
+
+import { ensureSchema, sql } from '@/lib/db'
 import { Accessibility, Activity, Apple, ArrowUpRight, BookOpen, CalendarCheck, HeartHandshake, Stethoscope } from 'lucide-react'
 
 const iconMap: Record<string, any> = {
@@ -14,7 +16,9 @@ const iconMap: Record<string, any> = {
 type Item = { icon?: string; title: string; text: string; href?: string; cta?: string }
 
 export default async function Page() {
-  const home = readJson<any>('home.json', {})
+  await ensureSchema()
+  const rows = await sql`SELECT data FROM home_content WHERE id = 1`
+  const home = (rows[0]?.data ?? {}) as any
   const heroEyebrow = home.heroEyebrow ?? 'Health care, therapy and support in Jambiani'
   const heroTitle = home.heroTitle ?? 'Care for every one , every day.'
   const heroDescription = home.heroDescription ?? 'Het Dhuran Special Needs Centre provides health care, therapy, learning and nutrition support for children and young adults in Jambiani, Zanzibar.'

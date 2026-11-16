@@ -1,4 +1,6 @@
-import { readJson } from '@/lib/storage'
+export const dynamic = 'force-dynamic'
+
+import { ensureSchema, sql } from '@/lib/db'
 import { ImageIcon } from 'lucide-react'
 
 export const metadata = {
@@ -7,8 +9,9 @@ export const metadata = {
 }
 
 export default async function GalleryPage() {
-  const items = readJson<any[]>('gallery.json', [])
-  const categories = Array.from(new Set(items.map((i) => i.category).filter(Boolean)))
+  await ensureSchema()
+  const items = await sql`SELECT id, label, category, image_url AS image FROM gallery_items ORDER BY created_at ASC`
+  const categories = Array.from(new Set(items.map((i: any) => i.category).filter(Boolean)))
 
   return (
     <div className="site-shell">
@@ -30,7 +33,7 @@ export default async function GalleryPage() {
         )}
 
         <div className="services-grid">
-          {items.map((item) => (
+          {items.map((item: any) => (
             <article className="service-item" key={item.id}>
               {item.image ? (
                 // eslint-disable-next-line @next/next/no-img-element

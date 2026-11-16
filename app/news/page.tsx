@@ -1,4 +1,6 @@
-import { readJson } from '@/lib/storage'
+export const dynamic = 'force-dynamic'
+
+import { ensureSchema, sql } from '@/lib/db'
 import { CalendarCheck } from 'lucide-react'
 
 export const metadata = {
@@ -7,7 +9,8 @@ export const metadata = {
 }
 
 export default async function NewsPage() {
-  const posts = readJson<any[]>('news.json', [])
+  await ensureSchema()
+  const posts = await sql`SELECT id, title, published_date AS date, body AS text FROM news_items ORDER BY created_at DESC`
 
   return (
     <div className="site-shell">
@@ -23,7 +26,7 @@ export default async function NewsPage() {
         </div>
 
         <div className="services-grid">
-          {posts.map((post) => (
+          {posts.map((post: any) => (
             <article className="service-item" key={post.id}>
               <CalendarCheck className="service-icon" size={23} strokeWidth={1.7} aria-hidden="true" />
               <h3>{post.title}</h3>
