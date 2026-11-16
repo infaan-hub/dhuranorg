@@ -29,6 +29,10 @@ export default async function Page() {
   const healthItems: Item[] = home.healthItems ?? []
   const careItems: Item[] = home.careItems ?? []
 
+  await ensureSchema()
+  const latestNews = await sql`SELECT id, title, published_date AS date, body AS text FROM news_items WHERE status = 'published' ORDER BY created_at DESC LIMIT 3`
+  const upcomingEvents = await sql`SELECT id, title, date, description AS text FROM events ORDER BY created_at DESC LIMIT 3`
+
   return (
     <div className="site-shell">
       <section className="hero-wrap" aria-labelledby="hero-title">
@@ -110,6 +114,54 @@ export default async function Page() {
               </article>
             )
           })}
+        </div>
+      </section>
+
+      <section className="work-section container" id="news" aria-labelledby="news-title">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Latest news</p>
+            <h2 id="news-title">Updates from the centre.</h2>
+          </div>
+          <p className="section-intro">Recent articles and stories from Het Dhuran.</p>
+        </div>
+        <div className="services-grid">
+          {latestNews.length === 0 && <p style={{ color: 'var(--muted-ink)' }}>No news yet.</p>}
+          {latestNews.map((n: any) => (
+            <article className="service-item" key={n.id}>
+              <CalendarCheck className="service-icon" size={23} strokeWidth={1.7} aria-hidden="true" />
+              <h3>{n.title}</h3>
+              <p style={{ fontSize: '13px', color: 'var(--muted-ink)', margin: '0 0 6px' }}>{n.date}</p>
+              <p>{n.text}</p>
+            </article>
+          ))}
+        </div>
+        <div className="section-action">
+          <a href="/news" className="button button-accent">View all news <ArrowUpRight size={17} /></a>
+        </div>
+      </section>
+
+      <section className="work-section container" id="events" aria-labelledby="events-title">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Events</p>
+            <h2 id="events-title">Upcoming activities.</h2>
+          </div>
+          <p className="section-intro">Join us at the centre.</p>
+        </div>
+        <div className="services-grid">
+          {upcomingEvents.length === 0 && <p style={{ color: 'var(--muted-ink)' }}>No events yet.</p>}
+          {upcomingEvents.map((e: any) => (
+            <article className="service-item" key={e.id}>
+              <CalendarCheck className="service-icon" size={23} strokeWidth={1.7} aria-hidden="true" />
+              <h3>{e.title}</h3>
+              {e.date && <p style={{ fontSize: '13px', color: 'var(--muted-ink)', margin: '0 0 6px' }}>{e.date}</p>}
+              <p>{e.text}</p>
+            </article>
+          ))}
+        </div>
+        <div className="section-action">
+          <a href="/events" className="button button-accent">View all events <ArrowUpRight size={17} /></a>
         </div>
       </section>
     </div>
