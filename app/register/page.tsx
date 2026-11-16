@@ -5,6 +5,8 @@ import { useRouter } from 'next/navigation'
 
 export default function RegisterPage() {
   const router = useRouter()
+  const [fullName, setFullName] = useState('')
+  const [email, setEmail] = useState('')
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
@@ -17,7 +19,7 @@ export default function RegisterPage() {
     const res = await fetch('/api/auth/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify({ fullName, email, username, password }),
     })
     setLoading(false)
     if (!res.ok) {
@@ -39,6 +41,19 @@ export default function RegisterPage() {
           </div>
         </div>
         <form onSubmit={submit} style={{ display: 'grid', gap: '14px' }}>
+          <input
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
+            placeholder="Full name"
+            style={{ padding: '12px 14px', border: '1px solid var(--line)', borderRadius: '9px', background: 'var(--surface)', color: 'var(--ink)' }}
+          />
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Email"
+            style={{ padding: '12px 14px', border: '1px solid var(--line)', borderRadius: '9px', background: 'var(--surface)', color: 'var(--ink)' }}
+          />
           <input
             value={username}
             onChange={(e) => setUsername(e.target.value)}
