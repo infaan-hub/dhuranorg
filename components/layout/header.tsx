@@ -14,7 +14,8 @@ const navItems = [
   { href: '/events', key: 'events' },
   { href: '/faq', key: 'faq' },
   { href: '/search', key: 'search' },
-  { href: 'https://zan-medibook.vercel.app/', key: 'contact' },
+  { href: '/contact', key: 'contact' },
+  { href: 'https://zan-medibook.vercel.app/', key: 'connect' },
 ]
 
 export function Header() {
