@@ -48,13 +48,6 @@ export function Header() {
             {open ? <X size={21} /> : <Menu size={21} />}
           </button>
 
-          <button className="theme-toggle" type="button" aria-label="Toggle dark mode" onClick={toggleTheme}>
-            {dark ? <Sun size={18} /> : <Moon size={18} />}
-          </button>
-          <button className="theme-toggle" type="button" aria-label="Toggle language" onClick={() => setLang(lang === 'en' ? 'sw' : 'en')}>
-            <Globe size={18} /> {lang.toUpperCase()}
-          </button>
-
           <a href="#top" className="brand brand-right" aria-label="Het Dhuran Special Needs Centre home" onClick={() => setOpen(false)}>
             <span className="brand-icon"><Heart size={19} strokeWidth={2.3} /></span>
             <span className="brand-copy"><strong>het dhuran</strong><small>Special Needs Centre</small></span>
@@ -68,6 +61,14 @@ export function Header() {
           <span className="brand-icon"><Heart size={19} strokeWidth={2.3} /></span>
           <span className="brand-copy"><strong>het dhuran</strong><small>Special Needs Centre</small></span>
         </a>
+        <div className="sidebar-settings">
+          <button className="sidebar-setting-btn" type="button" onClick={toggleTheme}>
+            {dark ? <Sun size={16} /> : <Moon size={16} />} {dark ? 'Light' : 'Dark'}
+          </button>
+          <button className="sidebar-setting-btn" type="button" onClick={() => setLang(lang === 'en' ? 'sw' : 'en')}>
+            <Globe size={16} /> {lang.toUpperCase()}
+          </button>
+        </div>
         <nav className="sidebar-nav">
           {navItems.map(({ href, key }) => (
             <Link key={href} href={href} onClick={() => setOpen(false)}>

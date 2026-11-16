@@ -77,7 +77,7 @@ html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; }
   background: var(--paper);
   border-bottom: 1px solid var(--line);
 }
-.header-inner { min-height: 78px; display: grid; grid-template-columns: 44px 44px 44px 1fr auto; align-items: center; gap: 12px; }
+.header-inner { min-height: 78px; display: grid; grid-template-columns: 44px 1fr auto; align-items: center; gap: 12px; }
 .brand-right { justify-self: end; text-align: right; }
 .header-spacer { width: 44px; height: 44px; }
 .brand { display: inline-flex; align-items: center; gap: 11px; white-space: nowrap; flex-wrap: nowrap; }
@@ -200,6 +200,9 @@ html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; }
 .sidebar-open { transform: translateX(0); }
 
 .sidebar-brand { margin-bottom: 18px; }
+.sidebar-settings { display: flex; gap: 8px; margin-bottom: 16px; }
+.sidebar-setting-btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 12px; border-radius: 9px; border: 1px solid var(--line); background: transparent; color: var(--ink); cursor: pointer; font-size: 13px; font-weight: 500; transition: background-color .18s; }
+.sidebar-setting-btn:hover { background: var(--line); }
 .sidebar-nav { display: flex; flex-direction: column; gap: 6px; }
 .sidebar-nav a {
   display: flex;
