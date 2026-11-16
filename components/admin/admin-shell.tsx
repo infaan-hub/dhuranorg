@@ -8,6 +8,8 @@ const links = [
   { href: '/admin/editor', label: 'Home editor' },
   { href: '/admin/gallery', label: 'Gallery' },
   { href: '/admin/news', label: 'News' },
+  { href: '/admin/events', label: 'Events' },
+  { href: '/admin/media', label: 'Media' },
 ]
 
 export function AdminShell({ children }: { children: React.ReactNode }) {

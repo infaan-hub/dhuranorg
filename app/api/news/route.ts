@@ -6,10 +6,15 @@ import { unstable_noStore as noStore } from 'next/cache'
 import { ensureSchema, sql } from '@/lib/db'
 import { parseCookies, verifySession } from '@/lib/auth'
 
-export async function GET() {
+export async function GET(req: Request) {
   noStore()
   await ensureSchema()
-  const rows = await sql`SELECT id, title, published_date AS date, body AS text FROM news_items ORDER BY created_at DESC`
+  const cookies = parseCookies(req.headers.get('cookie'))
+  const session = verifySession(cookies['session'])
+  const isAdmin = !!session && session.role === 'admin'
+  const rows = isAdmin
+    ? await sql`SELECT id, title, published_date AS date, body AS text, status FROM news_items ORDER BY created_at DESC`
+    : await sql`SELECT id, title, published_date AS date, body AS text, status FROM news_items WHERE status = 'published' ORDER BY created_at DESC`
   return NextResponse.json(rows)
 }
 
@@ -20,9 +25,9 @@ export async function POST(req: Request) {
   await ensureSchema()
   const body = await req.json()
   const rows = await sql`
-    INSERT INTO news_items (title, published_date, body)
-    VALUES (${body.title || 'Untitled'}, ${body.date || new Date().getFullYear().toString()}, ${body.text || ''})
-    RETURNING id, title, published_date AS date, body AS text
+    INSERT INTO news_items (title, published_date, body, status)
+    VALUES (${body.title || 'Untitled'}, ${body.date || new Date().getFullYear().toString()}, ${body.text || ''}, ${body.status || 'published'})
+    RETURNING id, title, published_date AS date, body AS text, status
   `
   return NextResponse.json(rows[0])
 }
@@ -35,7 +40,7 @@ export async function PUT(req: Request) {
   const body = await req.json() as any[]
   await sql`DELETE FROM news_items`
   for (const item of body) {
-    await sql`INSERT INTO news_items (id, title, published_date, body) VALUES (${item.id}, ${item.title}, ${item.date}, ${item.text})`
+    await sql`INSERT INTO news_items (id, title, published_date, body, status) VALUES (${item.id}, ${item.title}, ${item.date}, ${item.text}, ${item.status || 'published'})`
   }
   return NextResponse.json({ ok: true })
 }

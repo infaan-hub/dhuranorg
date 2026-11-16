@@ -2,13 +2,14 @@
 
 import { useEffect, useState } from 'react'
 
-type Post = { id: string; title: string; date: string; text: string }
+type Post = { id: string; title: string; date: string; text: string; status?: string }
 
 export default function AdminNewsPage() {
   const [posts, setPosts] = useState<Post[]>([])
   const [title, setTitle] = useState('')
   const [date, setDate] = useState('')
   const [text, setText] = useState('')
+  const [postStatus, setPostStatus] = useState('published')
   const [status, setStatus] = useState('')
 
   useEffect(() => {
@@ -20,7 +21,7 @@ export default function AdminNewsPage() {
     const res = await fetch('/api/news', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ title, date, text }),
+      body: JSON.stringify({ title, date, text, status: postStatus }),
     })
     if (res.ok) {
       const item = await res.json()
@@ -59,6 +60,10 @@ export default function AdminNewsPage() {
       <form onSubmit={add} style={{ display: 'grid', gap: '8px', marginBottom: '20px' }}>
         <input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Title" style={inputStyle} />
         <input value={date} onChange={(e) => setDate(e.target.value)} placeholder="Date (e.g. 2026)" style={inputStyle} />
+        <select value={postStatus} onChange={(e) => setPostStatus(e.target.value)} style={inputStyle}>
+          <option value="published">Published</option>
+          <option value="draft">Draft</option>
+        </select>
         <textarea value={text} onChange={(e) => setText(e.target.value)} placeholder="Article text" rows={4} style={inputStyle} />
         <button type="submit" className="button button-accent" style={{ justifySelf: 'start' }}>Post article</button>
       </form>
@@ -68,6 +73,10 @@ export default function AdminNewsPage() {
           <div key={post.id} style={{ border: '1px solid var(--line)', borderRadius: '9px', padding: '12px', background: 'var(--surface)' }}>
             <input value={post.title} onChange={(e) => updatePost(post.id, 'title', e.target.value)} style={{ ...inputStyle, marginBottom: '6px', fontWeight: 600 }} />
             <input value={post.date} onChange={(e) => updatePost(post.id, 'date', e.target.value)} style={{ ...inputStyle, marginBottom: '6px' }} />
+            <select value={post.status || 'published'} onChange={(e) => updatePost(post.id, 'status', e.target.value)} style={{ ...inputStyle, marginBottom: '6px' }}>
+              <option value="published">Published</option>
+              <option value="draft">Draft</option>
+            </select>
             <textarea value={post.text} onChange={(e) => updatePost(post.id, 'text', e.target.value)} rows={3} style={inputStyle} />
             <button onClick={() => remove(post.id)} style={{ marginTop: '6px', padding: '8px 10px', borderRadius: '9px', border: '1px solid var(--line)', background: 'transparent', color: 'var(--ink)', cursor: 'pointer' }}>Delete</button>
           </div>

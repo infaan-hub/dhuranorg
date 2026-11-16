@@ -15,9 +15,13 @@ export function ensureSchema(): Promise<void> {
         full_name text,
         email text,
         role text NOT NULL DEFAULT 'admin',
+        reset_token text,
+        reset_expires timestamptz,
         created_at timestamptz NOT NULL DEFAULT now()
       )
     `
+    await sql`ALTER TABLE admins ADD COLUMN IF NOT EXISTS reset_token text`
+    await sql`ALTER TABLE admins ADD COLUMN IF NOT EXISTS reset_expires timestamptz`
     await sql`
       CREATE TABLE IF NOT EXISTS home_content (
         id int PRIMARY KEY DEFAULT 1,
@@ -40,9 +44,11 @@ export function ensureSchema(): Promise<void> {
         title text NOT NULL,
         published_date text,
         body text,
+        status text NOT NULL DEFAULT 'published',
         created_at timestamptz NOT NULL DEFAULT now()
       )
     `
+    await sql`ALTER TABLE news_items ADD COLUMN IF NOT EXISTS status text NOT NULL DEFAULT 'published'`
     await sql`
       CREATE TABLE IF NOT EXISTS site_stats (
         id int PRIMARY KEY DEFAULT 1,
@@ -53,6 +59,32 @@ export function ensureSchema(): Promise<void> {
       CREATE TABLE IF NOT EXISTS page_views (
         path text PRIMARY KEY,
         count bigint NOT NULL DEFAULT 0
+      )
+    `
+    await sql`
+      CREATE TABLE IF NOT EXISTS contact_submissions (
+        id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+        name text,
+        email text,
+        message text,
+        created_at timestamptz NOT NULL DEFAULT now()
+      )
+    `
+    await sql`
+      CREATE TABLE IF NOT EXISTS media_items (
+        id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+        name text,
+        url text NOT NULL,
+        created_at timestamptz NOT NULL DEFAULT now()
+      )
+    `
+    await sql`
+      CREATE TABLE IF NOT EXISTS events (
+        id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+        title text NOT NULL,
+        date text,
+        description text,
+        created_at timestamptz NOT NULL DEFAULT now()
       )
     `
     // seed home content if empty

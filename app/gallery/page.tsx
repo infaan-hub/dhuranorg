@@ -3,6 +3,7 @@ export const dynamic = 'force-dynamic'
 import { unstable_noStore as noStore } from 'next/cache'
 import { ensureSchema, sql } from '@/lib/db'
 import { ImageIcon } from 'lucide-react'
+import { Breadcrumbs } from '@/components/breadcrumbs'
 
 export const metadata = {
   title: 'Gallery | Het Dhuran Special Needs Centre',
@@ -18,6 +19,7 @@ export default async function GalleryPage() {
   return (
     <div className="site-shell">
       <section className="work-section container" aria-labelledby="gallery-title">
+        <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Gallery' }]} />
         <div className="section-heading">
           <div>
             <p className="eyebrow">Gallery</p>

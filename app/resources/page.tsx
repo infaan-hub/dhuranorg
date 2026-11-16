@@ -1,4 +1,5 @@
 import { BookOpen, HelpCircle, Stethoscope } from 'lucide-react'
+import { Breadcrumbs } from '@/components/breadcrumbs'
 
 export const metadata = {
   title: 'Resources for families | Het Dhuran Special Needs Centre',
@@ -16,6 +17,7 @@ export default function ResourcesPage() {
   return (
     <div className="site-shell">
       <section className="work-section container" aria-labelledby="resources-title">
+        <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Resources' }]} />
         <div className="section-heading">
           <div>
             <p className="eyebrow">Resources for families</p>

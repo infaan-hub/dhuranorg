@@ -1,4 +1,5 @@
 import { Accessibility, Apple, BookOpen, CalendarCheck, Stethoscope } from 'lucide-react'
+import { Breadcrumbs } from '@/components/breadcrumbs'
 
 export const metadata = {
   title: 'Programmes | Het Dhuran Special Needs Centre',
@@ -17,6 +18,7 @@ export default function ProgramsPage() {
   return (
     <div className="site-shell">
       <section className="work-section container" aria-labelledby="programs-title">
+        <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Programmes' }]} />
         <div className="section-heading">
           <div>
             <p className="eyebrow">Our work</p>

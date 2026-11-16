@@ -32,6 +32,16 @@
   --font-heading: var(--font-fraunces), 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
   --font-body: var(--font-inter), Inter, Arial, sans-serif;
 }
+.dark {
+  --paper: #0e1a17;
+  --surface: #16241f;
+  --ink: #e8efe9;
+  --muted-ink: #a8b5ae;
+  --line: #2a3a34;
+  --forest: #4aa3b5;
+  --clay: #4aa3b5;
+  --dark: #0a120f;
+}
 
 @layer base {
   * { @apply border-border; }
@@ -67,7 +77,7 @@ html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; }
   background: var(--paper);
   border-bottom: 1px solid var(--line);
 }
-.header-inner { min-height: 78px; display: grid; grid-template-columns: 44px 1fr 44px; align-items: center; gap: 12px; }
+.header-inner { min-height: 78px; display: grid; grid-template-columns: 44px 44px 44px 1fr auto; align-items: center; gap: 12px; }
 .brand-right { justify-self: end; text-align: right; }
 .header-spacer { width: 44px; height: 44px; }
 .brand { display: inline-flex; align-items: center; gap: 11px; white-space: nowrap; flex-wrap: nowrap; }
@@ -92,6 +102,7 @@ html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; }
 .nav-donate { min-height: 43px; padding: 0 16px; color: white; background: var(--forest); }
 .nav-donate:hover { background: #0f4a52; }
 .menu-toggle { display: grid; place-items: center; width: 42px; height: 42px; padding: 0; border: 1px solid var(--line); border-radius: 9px; background: transparent; color: var(--ink); cursor: pointer; }
+.theme-toggle { display: grid; place-items: center; width: 42px; height: 42px; padding: 0; border: 1px solid var(--line); border-radius: 9px; background: transparent; color: var(--ink); cursor: pointer; }
 
 .hero-wrap { overflow: hidden; }
 .hero {

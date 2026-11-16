@@ -1,4 +1,5 @@
 import { HeartHandshake, MapPin, Sparkles } from 'lucide-react'
+import { Breadcrumbs } from '@/components/breadcrumbs'
 
 export const metadata = {
   title: 'About | Het Dhuran Special Needs Centre',
@@ -9,6 +10,7 @@ export default function AboutPage() {
   return (
     <div className="site-shell">
       <section className="work-section container" aria-labelledby="about-title">
+        <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'About' }]} />
         <div className="section-heading">
           <div>
             <p className="eyebrow">Our story</p>

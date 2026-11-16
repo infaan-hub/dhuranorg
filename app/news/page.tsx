@@ -3,6 +3,8 @@ export const dynamic = 'force-dynamic'
 import { unstable_noStore as noStore } from 'next/cache'
 import { ensureSchema, sql } from '@/lib/db'
 import { CalendarCheck } from 'lucide-react'
+import { Breadcrumbs } from '@/components/breadcrumbs'
+import { ShareButtons } from '@/components/share-buttons'
 
 export const metadata = {
   title: 'News & Blog | Het Dhuran Special Needs Centre',
@@ -17,6 +19,7 @@ export default async function NewsPage() {
   return (
     <div className="site-shell">
       <section className="work-section container" aria-labelledby="news-title">
+        <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'News' }]} />
         <div className="section-heading">
           <div>
             <p className="eyebrow">News & blog</p>
@@ -33,7 +36,8 @@ export default async function NewsPage() {
               <CalendarCheck className="service-icon" size={23} strokeWidth={1.7} aria-hidden="true" />
               <h3>{post.title}</h3>
               <p style={{ fontSize: '13px', color: 'var(--muted-ink)', margin: '0 0 6px' }}>{post.date}</p>
-              <p>{post.text}</p>
+              <div dangerouslySetInnerHTML={{ __html: post.text }} />
+              <ShareButtons title={post.title} />
             </article>
           ))}
         </div>

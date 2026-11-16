@@ -61,6 +61,8 @@ function LoginForm() {
         </form>
         <p style={{ marginTop: '16px', fontSize: '14px', color: 'var(--muted-ink)' }}>
           No account? <a href="/register" style={{ color: 'var(--clay)' }}>Register</a>
+          {' · '}
+          <a href="/forgot-password" style={{ color: 'var(--clay)' }}>Forgot password?</a>
         </p>
       </section>
     </div>

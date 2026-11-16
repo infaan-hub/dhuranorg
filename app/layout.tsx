@@ -4,6 +4,7 @@ import './globals.css'
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
 import { Tracker } from '@/components/tracker'
+import { Providers } from '@/components/providers'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const fraunces = Fraunces({ subsets: ['latin'], weight: 'variable', variable: '--font-fraunces', display: 'swap' })
@@ -47,10 +48,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${fraunces.variable}`}>
       <body className="antialiased min-h-screen bg-background text-foreground">
-        <Header />
-        <Tracker />
-        <main>{children}</main>
-        <Footer />
+        <Providers>
+          <Header />
+          <Tracker />
+          <main>{children}</main>
+          <Footer />
+        </Providers>
       </body>
     </html>
   )
