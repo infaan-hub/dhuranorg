@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { ArrowUpRight, Globe, Menu, X } from 'lucide-react'
 import { useLang } from '@/lib/i18n'
@@ -21,6 +21,20 @@ const navItems = [
 export function Header() {
   const [open, setOpen] = useState(false)
   const { lang, setLang, t } = useLang()
+
+  useEffect(() => {
+    if (!open) return
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpen(false)
+    }
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    document.addEventListener('keydown', onKeyDown)
+    return () => {
+      document.body.style.overflow = previousOverflow
+      document.removeEventListener('keydown', onKeyDown)
+    }
+  }, [open])
 
   return (
     <>
@@ -43,10 +57,20 @@ export function Header() {
       </header>
 
       <div className={`sidebar-overlay${open ? ' sidebar-overlay-open' : ''}`} onClick={() => setOpen(false)} aria-hidden="true" />
-      <aside className={`sidebar${open ? ' sidebar-open' : ''}`} aria-label="Main navigation">
-        <a href="#top" className="brand sidebar-brand" onClick={() => setOpen(false)}>
-          <span className="brand-copy"><strong>dhuran</strong><small>Special Needs Centre</small></span>
-        </a>
+      <aside className={`sidebar${open ? ' sidebar-open' : ''}`} aria-label="Main navigation" aria-hidden={!open}>
+        <div className="sidebar-head">
+          <a href="#top" className="brand sidebar-brand" onClick={() => setOpen(false)}>
+            <span className="brand-copy"><strong>dhuran</strong><small>Special Needs Centre</small></span>
+          </a>
+          <button
+            className="sidebar-close"
+            type="button"
+            aria-label="Close navigation"
+            onClick={() => setOpen(false)}
+          >
+            <X size={18} />
+          </button>
+        </div>
         <div className="sidebar-settings">
           <button className="sidebar-setting-btn" type="button" onClick={() => setLang(lang === 'en' ? 'sw' : 'en')}>
             <Globe size={16} /> {lang.toUpperCase()}
