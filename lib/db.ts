@@ -38,6 +38,7 @@ export function ensureSchema(): Promise<void> {
         created_at timestamptz NOT NULL DEFAULT now()
       )
     `
+    await sql`ALTER TABLE gallery_items ADD COLUMN IF NOT EXISTS description text`
     await sql`
       CREATE TABLE IF NOT EXISTS news_items (
         id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -49,6 +50,7 @@ export function ensureSchema(): Promise<void> {
       )
     `
     await sql`ALTER TABLE news_items ADD COLUMN IF NOT EXISTS status text NOT NULL DEFAULT 'published'`
+    await sql`ALTER TABLE news_items ADD COLUMN IF NOT EXISTS image_url text`
     await sql`
       CREATE TABLE IF NOT EXISTS site_stats (
         id int PRIMARY KEY DEFAULT 1,
@@ -87,6 +89,7 @@ export function ensureSchema(): Promise<void> {
         created_at timestamptz NOT NULL DEFAULT now()
       )
     `
+    await sql`ALTER TABLE events ADD COLUMN IF NOT EXISTS image_url text`
     // seed home content if empty
     const rows = await sql`SELECT id FROM home_content WHERE id = 1`
     if (rows.length === 0) {
@@ -117,16 +120,29 @@ export function ensureSchema(): Promise<void> {
     const gcount = await sql`SELECT count(*)::int AS c FROM gallery_items`
     if (gcount[0].c === 0) {
       const seeds = [
-        { label: 'Community volunteers', category: 'Community' },
-        { label: 'Learning activities', category: 'Learning' },
-        { label: 'Therapy sessions', category: 'Therapy' },
-        { label: 'Nutrition support', category: 'Health' },
-        { label: 'Visitors & partners', category: 'Community' },
-        { label: 'Centre life', category: 'General' },
+        { label: 'Community volunteers', category: 'Care within the community', description: 'Families and local volunteers collaborating at the centre in Makunduchi and Jambiani.' },
+        { label: 'Learning activities', category: 'Care within the community', description: 'Special education and sensory activities shaped around each child’s pace, interests and needs.' },
+        { label: 'Therapy sessions', category: 'Health & wellbeing', description: 'Physical therapy and movement programmes that build mobility, confidence and everyday independence.' },
+        { label: 'Nutrition support', category: 'Health & wellbeing', description: 'Nutritional assessment and support to help every child grow strong and healthy.' },
+        { label: 'Living our compass and values', category: 'Our vision and mission', description: 'Welcoming every child with love, transparency, equality and collaboration across South Unguja.' },
+        { label: 'Community activity day', category: 'Recent events', description: 'Families, caregivers and partners gathered for a vibrant day of learning and play.' },
       ]
       for (const s of seeds) {
-        await sql`INSERT INTO gallery_items (label, category) VALUES (${s.label}, ${s.category})`
+        await sql`INSERT INTO gallery_items (label, category, description) VALUES (${s.label}, ${s.category}, ${s.description})`
       }
+    } else {
+      await sql`
+        UPDATE gallery_items SET description = CASE 
+          WHEN label = 'Community volunteers' THEN 'Families and local volunteers collaborating at the centre in Makunduchi and Jambiani.'
+          WHEN label = 'Learning activities' THEN 'Special education and sensory activities shaped around each child’s pace, interests and needs.'
+          WHEN label = 'Therapy sessions' THEN 'Physical therapy and movement programmes that build mobility, confidence and everyday independence.'
+          WHEN label = 'Nutrition support' THEN 'Nutritional assessment and support to help every child grow strong and healthy.'
+          WHEN label = 'Visitors & partners' THEN 'Welcoming every child with love, transparency, equality and collaboration across South Unguja.'
+          WHEN label = 'Centre life' THEN 'A welcoming space in South Unguja supporting children with disabilities and special needs.'
+          ELSE COALESCE(description, '')
+        END
+        WHERE description IS NULL OR description = ''
+      `
     }
     // seed events if empty
     const ecount = await sql`SELECT count(*)::int AS c FROM events`

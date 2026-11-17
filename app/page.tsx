@@ -2,6 +2,7 @@ export const dynamic = 'force-dynamic'
 
 import { unstable_noStore as noStore } from 'next/cache'
 import { ensureSchema, sql } from '@/lib/db'
+import { HomeGallery } from '@/components/home-gallery'
 import {
   Accessibility,
   Activity,
@@ -46,31 +47,40 @@ export default async function Page() {
   await ensureSchema()
   let latestNews: any[] = []
   let recentEvents: any[] = []
+  let galleryItems: any[] = []
   try {
-    latestNews = await sql`SELECT id, title, published_date AS date, body AS text FROM news_items WHERE status = 'published' ORDER BY created_at DESC LIMIT 3`
-    recentEvents = await sql`SELECT id, title, date, description AS text FROM events ORDER BY created_at DESC LIMIT 3`
+    latestNews = await sql`SELECT id, title, published_date AS date, body AS text, COALESCE(image_url, '') AS image FROM news_items WHERE status = 'published' ORDER BY created_at DESC LIMIT 3`
+    recentEvents = await sql`SELECT id, title, date, description AS text, COALESCE(image_url, '') AS image FROM events ORDER BY created_at DESC LIMIT 3`
+    galleryItems = await sql`
+      SELECT id, label, category, COALESCE(description, '') AS description, image_url AS image 
+      FROM gallery_items 
+      ORDER BY created_at ASC
+    `
   } catch {
     // fallback if DB connection fails
   }
 
   const defaultEvents = [
     {
-      id: '1',
+      id: 'default-1',
       title: 'Community activity day',
       date: '2026-12-05',
       text: 'Families, caregivers and volunteers come together for learning, play and solidarity.',
+      image: '',
     },
     {
-      id: '2',
+      id: 'default-2',
       title: 'Health and nutrition week',
       date: '2026-12-12',
       text: 'Routine check-ups, nutrition assessment and tailored dietary support for children.',
+      image: '',
     },
     {
-      id: '3',
+      id: 'default-3',
       title: 'Caregiver empowerment workshop',
       date: '2026-12-19',
       text: 'Building practical caregiving skills, mobility exercises and emotional support for parents.',
+      image: '',
     },
   ]
 
@@ -199,6 +209,26 @@ export default async function Page() {
         </div>
       </section>
 
+      <section className="work-section container" id="gallery" aria-labelledby="gallery-title">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Gallery</p>
+            <h2 id="gallery-title">Moments from across our centre.</h2>
+          </div>
+          <p className="section-intro">
+            Explore photos, milestones and everyday moments across each of our care programmes and community activities.
+          </p>
+        </div>
+
+        <HomeGallery items={galleryItems} />
+
+        <div className="section-action">
+          <a href="/gallery" className="button button-accent">
+            View full gallery <ArrowUpRight size={17} />
+          </a>
+        </div>
+      </section>
+
       <section className="work-section container" id="news" aria-labelledby="news-title">
         <div className="section-heading">
           <div>
@@ -211,8 +241,20 @@ export default async function Page() {
           {latestNews.length === 0 && <p style={{ color: 'var(--muted-ink)' }}>No news yet.</p>}
           {latestNews.map((n: any) => (
             <article className="service-item" key={n.id}>
+              {n.image && (
+                <a href={`/news/${n.id}`} style={{ display: 'block', marginBottom: '14px' }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={n.image}
+                    alt={n.title}
+                    style={{ width: '100%', height: '180px', objectFit: 'cover', borderRadius: '10px', border: '1px solid var(--line)' }}
+                  />
+                </a>
+              )}
               <CalendarCheck className="service-icon" size={23} strokeWidth={1.7} aria-hidden="true" />
-              <h3>{n.title}</h3>
+              <h3>
+                <a href={`/news/${n.id}`} style={{ color: 'inherit' }}>{n.title}</a>
+              </h3>
               <p style={{ fontSize: '13px', color: 'var(--muted-ink)', margin: '0 0 6px' }}>{n.date}</p>
               <p>{n.text}</p>
             </article>
@@ -232,14 +274,42 @@ export default async function Page() {
           <p className="section-intro">Community gatherings, health workshops and recent programmes at the centre.</p>
         </div>
         <div className="services-grid">
-          {displayEvents.map((e: any) => (
-            <article className="service-item" key={e.id}>
-              <CalendarCheck className="service-icon" size={23} strokeWidth={1.7} aria-hidden="true" />
-              <h3>{e.title}</h3>
-              {e.date && <p style={{ fontSize: '13px', color: 'var(--muted-ink)', margin: '0 0 6px' }}>{e.date}</p>}
-              <p>{e.text}</p>
-            </article>
-          ))}
+          {displayEvents.map((e: any) => {
+            const hasPage = !String(e.id).startsWith('default-')
+            return (
+              <article className="service-item" key={e.id}>
+                {e.image && (
+                  hasPage ? (
+                    <a href={`/event/${e.id}`} style={{ display: 'block', marginBottom: '14px' }}>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={e.image}
+                        alt={e.title}
+                        style={{ width: '100%', height: '180px', objectFit: 'cover', borderRadius: '10px', border: '1px solid var(--line)' }}
+                      />
+                    </a>
+                  ) : (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={e.image}
+                      alt={e.title}
+                      style={{ width: '100%', height: '180px', objectFit: 'cover', borderRadius: '10px', border: '1px solid var(--line)', marginBottom: '14px' }}
+                    />
+                  )
+                )}
+                <CalendarCheck className="service-icon" size={23} strokeWidth={1.7} aria-hidden="true" />
+                <h3>
+                  {hasPage ? (
+                    <a href={`/event/${e.id}`} style={{ color: 'inherit' }}>{e.title}</a>
+                  ) : (
+                    e.title
+                  )}
+                </h3>
+                {e.date && <p style={{ fontSize: '13px', color: 'var(--muted-ink)', margin: '0 0 6px' }}>{e.date}</p>}
+                <p>{e.text}</p>
+              </article>
+            )
+          })}
         </div>
         <div className="section-action">
           <a href="/events" className="button button-accent">View all events <ArrowUpRight size={17} /></a>

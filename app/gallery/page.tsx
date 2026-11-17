@@ -2,19 +2,27 @@ export const dynamic = 'force-dynamic'
 
 import { unstable_noStore as noStore } from 'next/cache'
 import { ensureSchema, sql } from '@/lib/db'
-import { ImageIcon } from 'lucide-react'
 import { Breadcrumbs } from '@/components/breadcrumbs'
+import { HomeGallery } from '@/components/home-gallery'
 
 export const metadata = {
   title: 'Gallery | Dhuran Special Needs Centre',
-  description: 'Photos and videos from the centre.',
+  description: 'Photos, milestones and descriptions from across our centre sections.',
 }
 
 export default async function GalleryPage() {
   noStore()
   await ensureSchema()
-  const items = await sql`SELECT id, label, category, image_url AS image FROM gallery_items ORDER BY created_at ASC`
-  const categories = Array.from(new Set(items.map((i: any) => i.category).filter(Boolean)))
+  let items: any[] = []
+  try {
+    items = await sql`
+      SELECT id, label, category, COALESCE(description, '') AS description, image_url AS image 
+      FROM gallery_items 
+      ORDER BY created_at ASC
+    `
+  } catch {
+    items = []
+  }
 
   return (
     <div className="site-shell">
@@ -23,33 +31,14 @@ export default async function GalleryPage() {
         <div className="section-heading">
           <div>
             <p className="eyebrow">Gallery</p>
-            <h2 id="gallery-title">Photos and videos from the centre.</h2>
+            <h2 id="gallery-title">Photos and moments from the centre.</h2>
           </div>
           <p className="section-intro">
-            A glimpse into daily life, learning and community at Dhuran.
+            Explore photos and descriptions across each of our programmes, care initiatives and community activities.
           </p>
         </div>
 
-        {categories.length > 0 && (
-          <p className="section-intro" style={{ maxWidth: '720px', marginBottom: '24px' }}>
-            Categories: {categories.join(', ')}
-          </p>
-        )}
-
-        <div className="services-grid">
-          {items.map((item: any) => (
-            <article className="service-item" key={item.id}>
-              {item.image ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img src={item.image} alt={item.label} style={{ width: '100%', height: '160px', objectFit: 'cover', borderRadius: '9px' }} />
-              ) : (
-                <ImageIcon className="service-icon" size={23} strokeWidth={1.7} aria-hidden="true" />
-              )}
-              <h3>{item.label}</h3>
-              <p>{item.category}</p>
-            </article>
-          ))}
-        </div>
+        <HomeGallery items={items} />
       </section>
     </div>
   )

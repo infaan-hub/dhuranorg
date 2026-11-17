@@ -13,8 +13,8 @@ export async function GET(req: Request) {
   const session = verifySession(cookies['session'])
   const isAdmin = !!session && session.role === 'admin'
   const rows = isAdmin
-    ? await sql`SELECT id, title, published_date AS date, body AS text, status FROM news_items ORDER BY created_at DESC`
-    : await sql`SELECT id, title, published_date AS date, body AS text, status FROM news_items WHERE status = 'published' ORDER BY created_at DESC`
+    ? await sql`SELECT id, title, published_date AS date, body AS text, status, COALESCE(image_url, '') AS image FROM news_items ORDER BY created_at DESC`
+    : await sql`SELECT id, title, published_date AS date, body AS text, status, COALESCE(image_url, '') AS image FROM news_items WHERE status = 'published' ORDER BY created_at DESC`
   return NextResponse.json(rows)
 }
 
@@ -25,9 +25,9 @@ export async function POST(req: Request) {
   await ensureSchema()
   const body = await req.json()
   const rows = await sql`
-    INSERT INTO news_items (title, published_date, body, status)
-    VALUES (${body.title || 'Untitled'}, ${body.date || new Date().getFullYear().toString()}, ${body.text || ''}, ${body.status || 'published'})
-    RETURNING id, title, published_date AS date, body AS text, status
+    INSERT INTO news_items (title, published_date, body, status, image_url)
+    VALUES (${body.title || 'Untitled'}, ${body.date || new Date().getFullYear().toString()}, ${body.text || ''}, ${body.status || 'published'}, ${body.image || ''})
+    RETURNING id, title, published_date AS date, body AS text, status, COALESCE(image_url, '') AS image
   `
   return NextResponse.json(rows[0])
 }
@@ -37,10 +37,19 @@ export async function PUT(req: Request) {
   const session = verifySession(cookies['session'])
   if (!session || session.role !== 'admin') return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   await ensureSchema()
-  const body = await req.json() as any[]
-  await sql`DELETE FROM news_items`
-  for (const item of body) {
-    await sql`INSERT INTO news_items (id, title, published_date, body, status) VALUES (${item.id}, ${item.title}, ${item.date}, ${item.text}, ${item.status || 'published'})`
+  const payload = await req.json()
+  const items = Array.isArray(payload) ? payload : [payload]
+  for (const item of items) {
+    if (!item?.id) continue
+    await sql`
+      UPDATE news_items SET
+        title = ${item.title || 'Untitled'},
+        published_date = ${item.date || ''},
+        body = ${item.text || ''},
+        status = ${item.status || 'published'},
+        image_url = ${item.image || ''}
+      WHERE id = ${item.id}
+    `
   }
   return NextResponse.json({ ok: true })
 }
