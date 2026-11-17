@@ -3,6 +3,7 @@ export const dynamic = 'force-dynamic'
 import { unstable_noStore as noStore } from 'next/cache'
 import { ensureSchema, sql } from '@/lib/db'
 import { HomeGallery } from '@/components/home-gallery'
+import { DonorButton } from '@/components/donor-button'
 import {
   Accessibility,
   Activity,
@@ -95,6 +96,9 @@ export default async function Page() {
               <p className="eyebrow">{heroEyebrow}</p>
               <h1 id="hero-title">{heroTitle}</h1>
               <p className="hero-description">{heroDescription}</p>
+              <div className="hero-actions">
+                <DonorButton />
+              </div>
             </div>
           </div>
         </div>
