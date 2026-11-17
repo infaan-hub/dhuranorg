@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { Accessibility, Activity, Apple, ArrowUpRight, BookOpen, CalendarCheck, HeartHandshake, Stethoscope } from 'lucide-react'
+import { Accessibility, Activity, Apple, ArrowUpRight, BookOpen, CalendarCheck, Compass, Heart, HeartHandshake, Scale, ShieldCheck, Stethoscope, Target, Users } from 'lucide-react'
 
 const iconMap: Record<string, any> = { Accessibility, Activity, Apple, BookOpen, CalendarCheck, HeartHandshake, Stethoscope }
 const iconNames = Object.keys(iconMap)
@@ -24,7 +24,6 @@ export default function EditorPage() {
   const [heroBackground, setHeroBackground] = useState('')
   const [services, setServices] = useState<Item[]>([])
   const [healthItems, setHealthItems] = useState<Item[]>([])
-  const [careItems, setCareItems] = useState<Item[]>([])
   const [status, setStatus] = useState('')
   const [loading, setLoading] = useState(true)
 
@@ -38,7 +37,6 @@ export default function EditorPage() {
         setHeroBackground(d.heroBackground ?? '')
         setServices(d.services ?? [])
         setHealthItems(d.healthItems ?? [])
-        setCareItems(d.careItems ?? [])
         setLoading(false)
       })
       .catch(() => { setStatus('Failed to load'); setLoading(false) })
@@ -67,7 +65,6 @@ export default function EditorPage() {
       heroBackground,
       services,
       healthItems,
-      careItems,
     }
     const res = await fetch('/api/home', {
       method: 'PUT',
@@ -108,7 +105,6 @@ export default function EditorPage() {
 
         <ArrayEditor title="Our work (services)" items={services} setItems={setServices} updateItem={updateItem} addItem={addItem} removeItem={removeItem} />
         <ArrayEditor title="Health & wellbeing" items={healthItems} setItems={setHealthItems} updateItem={updateItem} addItem={addItem} removeItem={removeItem} />
-        <CareEditor title="Our care" items={careItems} setItems={setCareItems} updateItem={updateItem} addItem={addItem} removeItem={removeItem} />
 
         <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
           <button onClick={save} className="button button-accent">Save changes</button>
@@ -177,26 +173,59 @@ export default function EditorPage() {
             </div>
           </section>
 
-          <section className="work-section container" id="support" aria-labelledby="support-title">
+          <section className="work-section container" id="vision-mission" aria-labelledby="vision-mission-title">
             <div className="section-heading">
               <div>
-                <p className="eyebrow">Our care</p>
+                <p className="eyebrow">Our vision and mission</p>
+                <h2 id="vision-mission-title">Compass, mission and values.</h2>
               </div>
+              <p className="section-intro">
+                Dhuran Supporting Organization is an organization that supports children with disabilities, mental health challenges and malnutrition, with its office in Makunduchi, South Unguja.
+              </p>
             </div>
-            <div className="services-grid">
-              {careItems.map((s, i) => {
-                const Icon = s.icon ? iconMap[s.icon] : null
-                return (
-                  <article className="service-item" key={i}>
-                    {Icon && <Icon className="service-icon" size={23} strokeWidth={1.7} aria-hidden="true" />}
-                    <h3>{s.title}</h3>
-                    <p>{s.text}</p>
-                    {s.href && s.cta && <a className="text-link">{s.cta} <ArrowUpRight size={14} /></a>}
-                  </article>
-                )
-              })}
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px', marginBottom: '32px' }}>
+              <article className="service-item" style={{ minHeight: 'auto', background: 'var(--surface)', padding: '24px', borderRadius: '12px', border: '1px solid var(--line)' }}>
+                <Compass className="service-icon" size={26} strokeWidth={1.8} aria-hidden="true" />
+                <h3 style={{ marginTop: '12px', marginBottom: '8px' }}>Compass</h3>
+                <p style={{ maxWidth: '100%', color: 'var(--muted-ink)', fontSize: '14px', lineHeight: '1.6' }}>
+                  To have a society where every child, especially those with disabilities, mental health challenges or malnutrition, has access to good health, education and an equal opportunity to achieve their dreams.
+                </p>
+              </article>
+              <article className="service-item" style={{ minHeight: 'auto', background: 'var(--surface)', padding: '24px', borderRadius: '12px', border: '1px solid var(--line)' }}>
+                <Target className="service-icon" size={26} strokeWidth={1.8} aria-hidden="true" />
+                <h3 style={{ marginTop: '12px', marginBottom: '8px' }}>Mission</h3>
+                <p style={{ maxWidth: '100%', color: 'var(--muted-ink)', fontSize: '14px', lineHeight: '1.6' }}>
+                  Serving children with special needs with good nutrition, treatment, counseling and assistive devices; building parenting skills for parents and caregivers; and collaborating with the community and stakeholders so that donations are used transparently and responsibly.
+                </p>
+              </article>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '16px' }}>
+              <article className="service-item" style={{ minHeight: 'auto', padding: '16px 12px 10px 0' }}>
+                <Heart className="service-icon" size={20} strokeWidth={1.8} aria-hidden="true" />
+                <h3 style={{ fontSize: '18px' }}>Love</h3>
+                <p style={{ fontSize: '13px' }}>Every child is welcomed with compassion and respect.</p>
+              </article>
+              <article className="service-item" style={{ minHeight: 'auto', padding: '16px 12px 10px 0' }}>
+                <ShieldCheck className="service-icon" size={20} strokeWidth={1.8} aria-hidden="true" />
+                <h3 style={{ fontSize: '18px' }}>Transparency</h3>
+                <p style={{ fontSize: '13px' }}>Contributions and their use are visible and reported.</p>
+              </article>
+              <article className="service-item" style={{ minHeight: 'auto', padding: '16px 12px 10px 0' }}>
+                <Scale className="service-icon" size={20} strokeWidth={1.8} aria-hidden="true" />
+                <h3 style={{ fontSize: '18px' }}>Equality</h3>
+                <p style={{ fontSize: '13px' }}>All children receive services without discrimination.</p>
+              </article>
+              <article className="service-item" style={{ minHeight: 'auto', padding: '16px 12px 10px 0' }}>
+                <Users className="service-icon" size={20} strokeWidth={1.8} aria-hidden="true" />
+                <h3 style={{ fontSize: '18px' }}>Collaboration</h3>
+                <p style={{ fontSize: '13px' }}>We work together with parents, caregivers and the community.</p>
+              </article>
             </div>
           </section>
+
+
         </div>
       </div>
     </div>
@@ -224,25 +253,3 @@ function ArrayEditor({ title, items, setItems, updateItem, addItem, removeItem }
   )
 }
 
-function CareEditor({ title, items, setItems, updateItem, addItem, removeItem }: any) {
-  return (
-    <section style={{ display: 'grid', gap: '10px' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <h2 style={{ font: '500 18px/1.2 var(--font-heading)', margin: 0 }}>{title}</h2>
-        <button type="button" onClick={() => addItem(setItems, items)} style={{ padding: '6px 10px', borderRadius: '9px', border: '1px solid var(--line)', background: 'transparent', color: 'var(--ink)', cursor: 'pointer' }}>+ Add</button>
-      </div>
-      {items.map((item: Item, idx: number) => (
-        <div key={idx} style={{ border: '1px solid var(--line)', borderRadius: '9px', padding: '10px', display: 'grid', gap: '6px', background: 'var(--surface)' }}>
-          <select value={item.icon || 'BookOpen'} onChange={(e) => updateItem(items, setItems, idx, 'icon', e.target.value)} style={inputStyle}>
-            {iconNames.map((n) => <option key={n} value={n}>{n}</option>)}
-          </select>
-          <input value={item.title} onChange={(e) => updateItem(items, setItems, idx, 'title', e.target.value)} placeholder="Title" style={inputStyle} />
-          <textarea value={item.text} onChange={(e) => updateItem(items, setItems, idx, 'text', e.target.value)} placeholder="Text" rows={2} style={inputStyle} />
-          <input value={item.href || ''} onChange={(e) => updateItem(items, setItems, idx, 'href', e.target.value)} placeholder="Link (href)" style={inputStyle} />
-          <input value={item.cta || ''} onChange={(e) => updateItem(items, setItems, idx, 'cta', e.target.value)} placeholder="CTA text" style={inputStyle} />
-          <button type="button" onClick={() => removeItem(items, setItems, idx)} style={{ padding: '6px 10px', borderRadius: '9px', border: '1px solid var(--line)', background: 'transparent', color: 'var(--ink)', cursor: 'pointer', justifySelf: 'start' }}>Remove</button>
-        </div>
-      ))}
-    </section>
-  )
-}

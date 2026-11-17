@@ -2,7 +2,22 @@ export const dynamic = 'force-dynamic'
 
 import { unstable_noStore as noStore } from 'next/cache'
 import { ensureSchema, sql } from '@/lib/db'
-import { Accessibility, Activity, Apple, ArrowUpRight, BookOpen, CalendarCheck, HeartHandshake, Stethoscope } from 'lucide-react'
+import {
+  Accessibility,
+  Activity,
+  Apple,
+  ArrowUpRight,
+  BookOpen,
+  CalendarCheck,
+  Compass,
+  Heart,
+  HeartHandshake,
+  Scale,
+  ShieldCheck,
+  Stethoscope,
+  Target,
+  Users,
+} from 'lucide-react'
 
 const iconMap: Record<string, any> = {
   Accessibility,
@@ -27,11 +42,39 @@ export default async function Page() {
   const heroBackground = home.heroBackground ?? ''
   const services: Item[] = home.services ?? []
   const healthItems: Item[] = home.healthItems ?? []
-  const careItems: Item[] = home.careItems ?? []
 
   await ensureSchema()
-  const latestNews = await sql`SELECT id, title, published_date AS date, body AS text FROM news_items WHERE status = 'published' ORDER BY created_at DESC LIMIT 3`
-  const upcomingEvents = await sql`SELECT id, title, date, description AS text FROM events ORDER BY created_at DESC LIMIT 3`
+  let latestNews: any[] = []
+  let recentEvents: any[] = []
+  try {
+    latestNews = await sql`SELECT id, title, published_date AS date, body AS text FROM news_items WHERE status = 'published' ORDER BY created_at DESC LIMIT 3`
+    recentEvents = await sql`SELECT id, title, date, description AS text FROM events ORDER BY created_at DESC LIMIT 3`
+  } catch {
+    // fallback if DB connection fails
+  }
+
+  const defaultEvents = [
+    {
+      id: '1',
+      title: 'Community activity day',
+      date: '2026-12-05',
+      text: 'Families, caregivers and volunteers come together for learning, play and solidarity.',
+    },
+    {
+      id: '2',
+      title: 'Health and nutrition week',
+      date: '2026-12-12',
+      text: 'Routine check-ups, nutrition assessment and tailored dietary support for children.',
+    },
+    {
+      id: '3',
+      title: 'Caregiver empowerment workshop',
+      date: '2026-12-19',
+      text: 'Building practical caregiving skills, mobility exercises and emotional support for parents.',
+    },
+  ]
+
+  const displayEvents = recentEvents.length > 0 ? recentEvents : defaultEvents
 
   return (
     <div className="site-shell">
@@ -91,25 +134,68 @@ export default async function Page() {
         </div>
       </section>
 
-      <section className="work-section container" id="support" aria-labelledby="support-title">
+      <section className="work-section container" id="vision-mission" aria-labelledby="vision-mission-title">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">Our care</p>
+            <p className="eyebrow">Our vision and mission</p>
+            <h2 id="vision-mission-title">Compass, mission and values.</h2>
           </div>
+          <p className="section-intro">
+            Dhuran Supporting Organization is an organization that supports children with disabilities, mental health challenges and malnutrition, with its office in Makunduchi, South Unguja.
+          </p>
         </div>
 
-        <div className="services-grid">
-          {careItems.map(({ icon, title, text, href, cta }) => {
-            const Icon = icon ? iconMap[icon] : null
-            return (
-              <article className="service-item" key={title}>
-                {Icon && <Icon className="service-icon" size={23} strokeWidth={1.7} aria-hidden="true" />}
-                <h3>{title}</h3>
-                <p>{text}</p>
-                {href && cta && <a href={href} className="text-link">{cta} <ArrowUpRight size={14} /></a>}
-              </article>
-            )
-          })}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '28px', marginBottom: '56px' }}>
+          <article className="service-item" style={{ minHeight: 'auto', background: 'var(--surface)', padding: '32px 28px', borderRadius: '12px', border: '1px solid var(--line)' }}>
+            <Compass className="service-icon" size={28} strokeWidth={1.8} aria-hidden="true" />
+            <h3 style={{ marginTop: '14px', marginBottom: '10px' }}>Compass</h3>
+            <p style={{ maxWidth: '100%', color: 'var(--muted-ink)', fontSize: '15px', lineHeight: '1.65' }}>
+              To have a society where every child, especially those with disabilities, mental health challenges or malnutrition, has access to good health, education and an equal opportunity to achieve their dreams.
+            </p>
+          </article>
+
+          <article className="service-item" style={{ minHeight: 'auto', background: 'var(--surface)', padding: '32px 28px', borderRadius: '12px', border: '1px solid var(--line)' }}>
+            <Target className="service-icon" size={28} strokeWidth={1.8} aria-hidden="true" />
+            <h3 style={{ marginTop: '14px', marginBottom: '10px' }}>Mission</h3>
+            <p style={{ maxWidth: '100%', color: 'var(--muted-ink)', fontSize: '15px', lineHeight: '1.65' }}>
+              Serving children with special needs with good nutrition, treatment, counseling and assistive devices; building parenting skills for parents and caregivers; and collaborating with the community and stakeholders so that donations are used transparently and responsibly.
+            </p>
+          </article>
+        </div>
+
+        <div>
+          <div style={{ marginBottom: '24px' }}>
+            <p className="eyebrow" style={{ marginBottom: '6px' }}>Core values</p>
+            <h3 style={{ font: '500 24px/1.2 var(--font-heading)', color: 'var(--ink)', margin: 0, letterSpacing: '-0.015em' }}>
+              The principles behind our care.
+            </h3>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '24px' }}>
+            <article className="service-item" style={{ minHeight: 'auto', padding: '20px 16px 12px 0' }}>
+              <Heart className="service-icon" size={23} strokeWidth={1.8} aria-hidden="true" />
+              <h3>Love</h3>
+              <p>Every child is welcomed with compassion and respect.</p>
+            </article>
+
+            <article className="service-item" style={{ minHeight: 'auto', padding: '20px 16px 12px 0' }}>
+              <ShieldCheck className="service-icon" size={23} strokeWidth={1.8} aria-hidden="true" />
+              <h3>Transparency</h3>
+              <p>Contributions and their use are visible and reported.</p>
+            </article>
+
+            <article className="service-item" style={{ minHeight: 'auto', padding: '20px 16px 12px 0' }}>
+              <Scale className="service-icon" size={23} strokeWidth={1.8} aria-hidden="true" />
+              <h3>Equality</h3>
+              <p>All children receive services without discrimination.</p>
+            </article>
+
+            <article className="service-item" style={{ minHeight: 'auto', padding: '20px 16px 12px 0' }}>
+              <Users className="service-icon" size={23} strokeWidth={1.8} aria-hidden="true" />
+              <h3>Collaboration</h3>
+              <p>We work together with parents, caregivers and the community.</p>
+            </article>
+          </div>
         </div>
       </section>
 
@@ -140,14 +226,13 @@ export default async function Page() {
       <section className="work-section container" id="events" aria-labelledby="events-title">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">Events</p>
-            <h2 id="events-title">Upcoming activities.</h2>
+            <p className="eyebrow">Recent events</p>
+            <h2 id="events-title">Recent activities and gatherings.</h2>
           </div>
-          <p className="section-intro">Join us at the centre.</p>
+          <p className="section-intro">Community gatherings, health workshops and recent programmes at the centre.</p>
         </div>
         <div className="services-grid">
-          {upcomingEvents.length === 0 && <p style={{ color: 'var(--muted-ink)' }}>No events yet.</p>}
-          {upcomingEvents.map((e: any) => (
+          {displayEvents.map((e: any) => (
             <article className="service-item" key={e.id}>
               <CalendarCheck className="service-icon" size={23} strokeWidth={1.7} aria-hidden="true" />
               <h3>{e.title}</h3>
