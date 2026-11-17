@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { ArrowUpRight, Globe, Menu, X } from 'lucide-react'
 import { useLang } from '@/lib/i18n'
 
@@ -21,6 +22,8 @@ const navItems = [
 export function Header() {
   const [open, setOpen] = useState(false)
   const { lang, setLang, t } = useLang()
+  const pathname = usePathname()
+  const isAdmin = pathname.startsWith('/admin')
 
   useEffect(() => {
     if (!open) return
@@ -40,15 +43,19 @@ export function Header() {
     <>
       <header className="site-header" id="top">
         <div className="container header-inner">
-          <button
-            className="menu-toggle"
-            type="button"
-            aria-label={open ? 'Close navigation' : 'Open navigation'}
-            aria-expanded={open}
-            onClick={() => setOpen(!open)}
-          >
-            {open ? <X size={21} /> : <Menu size={21} />}
-          </button>
+          {isAdmin ? (
+            <span className="header-spacer" aria-hidden="true" />
+          ) : (
+            <button
+              className="menu-toggle"
+              type="button"
+              aria-label={open ? 'Close navigation' : 'Open navigation'}
+              aria-expanded={open}
+              onClick={() => setOpen(!open)}
+            >
+              {open ? <X size={21} /> : <Menu size={21} />}
+            </button>
+          )}
 
           <a href="#top" className="brand brand-right" aria-label="Dhuran Special Needs Centre home" onClick={() => setOpen(false)}>
             <span className="brand-copy"><strong>dhuran</strong><small>Special Needs Centre</small></span>
